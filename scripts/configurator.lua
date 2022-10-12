@@ -9,10 +9,10 @@
 
 local outputResult = nil;
 local messageResult = nil;
-local strUseFontTheme = nil;
-local strUseIconTheme = nil;
-local strTempIcon = nil;
-local strTempFont = nil;
+local sUseFontTheme = nil;
+local sUseIconTheme = nil;
+local sTempIcon = nil;
+local sTempFont = nil;
 
 local boolDebug = "off";
 
@@ -31,13 +31,10 @@ function onInit()
 	-- Set the options
 	registerChatOptions();
 	-- Initialize the theme based on previously selected options
-	-- may not need this is we get toggling going
-    changeChatTheme();
-	-- Change all of the icons and fonts based on the hit ans settings
+
 	outputResult = ActionsManager.outputResult;
 	messageResult = ActionsManager.messageResult;
-	ActionsManager.messageResult = customMessageResult;
-	ActionsManager.outputResult = swapThemeCollateral;
+	ActionsManager.outputResult = customOutputResult;
 
 	OptionsManager.registerCallback("CHATICONTHEME", changeOptions);
 	OptionsManager.registerCallback("CHATFONTCOLORS", changeOptions);
@@ -48,12 +45,21 @@ function onInit()
 			break;
 		end
 	end
+	if bBIDI then
+		ActionsManager.messageResult = customMessageResult;
+	end
 end
 
+function onClose()
+	ActionsManager.outputResult = outputResult;
+	ActionsManager.messageResult = messageResult;
+	OptionsManager.unregisterCallback("CHATICONTHEME", changeOptions);
+	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeOptions);
+end
 
 -- ***********************************************************************
 -- **																	**
--- **	  Function: swapThemeCollateral()								**
+-- **	  Function: customOutputResult()								**
 -- **	Parameters:	bTower 												**
 -- **				rSource												**
 -- **				rTarget 											**
@@ -64,7 +70,7 @@ end
 -- **																	**
 -- ***********************************************************************
 
-function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlayer)
+function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer)
 
 	-- *** DEBUG Let's see WTF is happening *** --
 	if (boolDebug == "on") then
@@ -102,7 +108,7 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 		-- *************************************** --
 		
 		-- Set the theme
-		if (strUseFontTheme == "off") then
+		if (sUseFontTheme == "off") then
 			-- set nothing'
 		else
 			-- now set the new fonts
@@ -110,92 +116,90 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 				-- it is a normal hit... 
 				-- ONCE THIS WORKS, JUST APPEND A STRING TO THE END
 				-- set the icon to hex hit
-				rMessageGM.font = "attack_roll_hit_msgfont" .. strTempFont;
-				rMessagePlayer.font = "attack_roll_hit_msgfont" .. strTempFont;
+				rMessageGM.font = "attack_roll_hit_msgfont" .. sTempFont;
+				rMessagePlayer.font = "attack_roll_hit_msgfont" .. sTempFont;
 			elseif (rMessageGM.icon == "roll_attack_miss") then
 				-- it is not a hit
 				-- set things to a miss
-				rMessageGM.font = "attack_roll_miss_msgfont" .. strTempFont;
-				rMessagePlayer.font = "attack_roll_miss_msgfont" .. strTempFont;
+				rMessageGM.font = "attack_roll_miss_msgfont" .. sTempFont;
+				rMessagePlayer.font = "attack_roll_miss_msgfont" .. sTempFont;
 				-- now that it is a miss, see if it is a fumble
 				if string.match(rMessageGM.text, "%[AUTOMATIC MISS%]") then
 					-- it is a fumble... reset things to a fumble
-					rMessageGM.font = "attack_roll_fumble_msgfont" .. strTempFont;
-					rMessagePlayer.font = "attack_roll_fumble_msgfont" .. strTempFont;
+					rMessageGM.font = "attack_roll_fumble_msgfont" .. sTempFont;
+					rMessagePlayer.font = "attack_roll_fumble_msgfont" .. sTempFont;
 				end	
 			elseif (rMessageGM.icon == "roll_attack_crit") then
 				-- it is a critical hit... set the stuff for crit
-				rMessageGM.font = "attack_roll_crit_msgfont" .. strTempFont;
-				rMessagePlayer.font = "attack_roll_crit_msgfont" .. strTempFont;
+				rMessageGM.font = "attack_roll_crit_msgfont" .. sTempFont;
+				rMessagePlayer.font = "attack_roll_crit_msgfont" .. sTempFont;
 			elseif (rMessageGM.icon == "roll_damage") then
 				-- it is a dammage roll
-				rMessageGM.font = "dammage_roll_msgfont" .. strTempFont;
-				rMessagePlayer.font = "dammage_roll_msgfont" .. strTempFont;
+				rMessageGM.font = "dammage_roll_msgfont" .. sTempFont;
+				rMessagePlayer.font = "dammage_roll_msgfont" .. sTempFont;
 			elseif (rMessageGM.icon == "roll_cast") then
 				-- it is a cast roll
-				rMessageGM.font = "cast_roll_msgfont" .. strTempFont;
-				rMessagePlayer.font = "cast_roll_msgfont" .. strTempFont;
+				rMessageGM.font = "cast_roll_msgfont" .. sTempFont;
+				rMessagePlayer.font = "cast_roll_msgfont" .. sTempFont;
 			elseif (rMessageGM.icon == "roll_heal") then
 				-- it is a cast roll
-				rMessageGM.font = "heal_roll_msgfont" .. strTempFont;
-				rMessagePlayer.font = "heal_roll_msgfont" .. strTempFont;
+				rMessageGM.font = "heal_roll_msgfont" .. sTempFont;
+				rMessagePlayer.font = "heal_roll_msgfont" .. sTempFont;
 			elseif (rMessageGM.icon == "roll_effect") then
 				-- it is an effect roll
-				rMessageGM.font = "effect_msgfont" .. strTempFont;
-				rMessagePlayer.font = "effect_msgfont" .. strTempFont;
+				rMessageGM.font = "effect_msgfont" .. sTempFont;
+				rMessagePlayer.font = "effect_msgfont" .. sTempFont;
 			end
 		end
 		-- ********* END CHANGE THE FONTS ******** --
 
-
 		-- *************************************** --
 		-- **	CHANGE THE ICONS 				** --
 		-- *************************************** --
-		
 
 		-- now set the new icons
 		if (rMessageGM.icon == "roll_attack_hit") then
 			-- it is a normal hit... 
 			-- ONCE THIS WORKS, JUST APPEND A STRING TO THE END
 			-- set the icon to hex hit
-			rMessageGM.icon = "roll_attack_hit" .. strTempIcon;
-			rMessagePlayer.icon = "roll_attack_hit" .. strTempIcon;
+			rMessageGM.icon = "roll_attack_hit" .. sTempIcon;
+			rMessagePlayer.icon = "roll_attack_hit" .. sTempIcon;
 		elseif (rMessageGM.icon == "roll_attack_miss") then
 			-- it is not a hit
 			-- set things to a miss
-			rMessageGM.icon = "roll_attack_miss" .. strTempIcon;
-			rMessagePlayer.icon = "roll_attack_miss" .. strTempIcon;
+			rMessageGM.icon = "roll_attack_miss" .. sTempIcon;
+			rMessagePlayer.icon = "roll_attack_miss" .. sTempIcon;
 			-- now that it is a miss, see if it is a fumble
 			if string.match(rMessageGM.text, "%[AUTOMATIC MISS%]") then
 				-- it is a fumble... reset things to a fumble
-				rMessageGM.icon = "roll_attack_fumble" .. strTempIcon;
-				rMessagePlayer.icon = "roll_attack_fumble" .. strTempIcon;
+				rMessageGM.icon = "roll_attack_fumble" .. sTempIcon;
+				rMessagePlayer.icon = "roll_attack_fumble" .. sTempIcon;
 			end
 					
 		elseif (rMessageGM.icon == "roll_attack_crit") then
 			-- it is a critical hit... set the stuff for crit
-			rMessageGM.icon = "roll_attack_crit" .. strTempIcon;
-			rMessagePlayer.icon = "roll_attack_crit" .. strTempIcon;
+			rMessageGM.icon = "roll_attack_crit" .. sTempIcon;
+			rMessagePlayer.icon = "roll_attack_crit" .. sTempIcon;
 
 		elseif (rMessageGM.icon == "roll_damage") then
 			-- it is a dammage roll
-			rMessageGM.icon = "roll_damage" .. strTempIcon;
-			rMessagePlayer.icon = "roll_damage" .. strTempIcon;
+			rMessageGM.icon = "roll_damage" .. sTempIcon;
+			rMessagePlayer.icon = "roll_damage" .. sTempIcon;
 
 		elseif (rMessageGM.icon == "roll_cast") then
 			-- it is a cast roll
-			rMessageGM.icon = "roll_cast" .. strTempIcon;
-			rMessagePlayer.icon = "roll_cast" .. strTempIcon;
+			rMessageGM.icon = "roll_cast" .. sTempIcon;
+			rMessagePlayer.icon = "roll_cast" .. sTempIcon;
 
 		elseif (rMessageGM.icon == "roll_heal") then
 			-- it is a heal roll
-			rMessageGM.icon = "roll_heal" .. strTempIcon;
-			rMessagePlayer.icon = "roll_heal" .. strTempIcon;
+			rMessageGM.icon = "roll_heal" .. sTempIcon;
+			rMessagePlayer.icon = "roll_heal" .. sTempIcon;
 
 		elseif (rMessageGM.icon == "roll_effect") then
 			-- it is an effect roll
-			rMessageGM.icon = "roll_effect" .. strTempIcon;
-			rMessagePlayer.icon = "roll_effect" .. strTempIcon;
+			rMessageGM.icon = "roll_effect" .. sTempIcon;
+			rMessagePlayer.icon = "roll_effect" .. sTempIcon;
 
 		end
 		-- ********* END CHANGE THE ICONS ******** --
@@ -205,8 +209,8 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 		-- *************************************** --
 		-- if the user doesn't wants to use character portriats instead of
 		-- custom icons, override the icons we just set.
-		--if (strUseIconTheme == "portraits") then
-		--	Debug.console("strUseIconTheme = ", strUseIconTheme);
+		--if (sUseIconTheme == "portraits") then
+		--	Debug.console("sUseIconTheme = ", sUseIconTheme);
 		--	Debug.console("sType = ", rSource["sType"]);
 		--	-- make sure it is a player character
 		--	if (rSource["sType"] == "pc") then
@@ -246,13 +250,9 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 		
 	end
 
-
-
-
 	-- send it to the chat window... woot
 	outputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer);
 end
-
 
 -- ***********************************************************************
 -- **																	**
@@ -264,8 +264,6 @@ end
 -- ***********************************************************************
 
 function registerChatOptions()
-
-
 	-- ** Set the Theme **
 	OptionsManager.registerOption2(
 	"CHATICONTHEME",
@@ -367,7 +365,7 @@ end
 function customMessageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
 	local bHideBIDIOutput = (bBIDI and rMessagePlayer.text:match("Bardic Inspiration"));
 	if bHideBIDIOutput and (rMessagePlayer.icon:match("roll_attack_hit_") or rMessagePlayer.icon:match("roll_attack_miss_")) then
-		rMessagePlayer.icon = "roll_attack" .. strTempIcon
+		rMessagePlayer.icon = "roll_attack" .. sTempIcon
 		rMessagePlayer.font = "msgfont"
 	end
 	messageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
@@ -377,34 +375,33 @@ end
 	-- **	GET OPTION						** --
 	-- *************************************** --
 function changeOptions()
-	strUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
-	strUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
+	sUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
+	sUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
 
 
 		--set the string
-	if (strUseFontTheme == "hearth") then
-		strTempFont = "_hearth";
-	elseif (strUseFontTheme == "light") then
-		strTempFont = "_light";
-	elseif (strUseFontTheme == "dark") then
-		strTempFont = "_dark";
+	if (sUseFontTheme == "hearth") then
+		sTempFont = "_hearth";
+	elseif (sUseFontTheme == "light") then
+		sTempFont = "_light";
+	elseif (sUseFontTheme == "dark") then
+		sTempFont = "_dark";
 	else
-		strTempFont = "";
+		sTempFont = "";
 	end
 
 	--set the string
-	if (strUseIconTheme == "hex") then
-		strTempIcon = "_hex";
-	elseif (strUseIconTheme == "simple") then
-		strTempIcon = "_simple";
-	elseif (strUseIconTheme == "round") then
-		strTempIcon = "_round";
-	elseif (strUseIconTheme == "square") then
-		strTempIcon = "_square";
-	elseif (strUseIconTheme == "dots") then
-		strTempIcon = "_dots";
+	if (sUseIconTheme == "hex") then
+		sTempIcon = "_hex";
+	elseif (sUseIconTheme == "simple") then
+		sTempIcon = "_simple";
+	elseif (sUseIconTheme == "round") then
+		sTempIcon = "_round";
+	elseif (sUseIconTheme == "square") then
+		sTempIcon = "_square";
+	elseif (sUseIconTheme == "dots") then
+		sTempIcon = "_dots";
 	else
-		strTempIcon = "";
+		sTempIcon = "";
 	end
-		
 end

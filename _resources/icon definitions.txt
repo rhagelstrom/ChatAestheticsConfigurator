@@ -1,0 +1,22 @@
+The icons used for all of those are defined in the graphics_icons.xml file. they map the name to the specific image files used.
+Code:
+	<!-- Rolls -->
+	  <icon name="roll_cast" file="graphics/icons/roll_cast.png" />
+
+	X <icon name="roll_attack" file="graphics/icons/roll_attack.png" />
+	X <icon name="roll_attack_miss" file="graphics/icons/roll_attack_miss.png" />
+	X <icon name="roll_attack_hit" file="graphics/icons/roll_attack_hit.png" />
+	X <icon name="roll_attack_crit" file="graphics/icons/roll_attack_crit.png" />
+
+	  <icon name="roll_damage" file="graphics/icons/roll_damage.png" />
+	  <icon name="roll_heal" file="graphics/icons/roll_heal.png" />
+
+	<!-- Character list -->
+	 <icon name="charlist_inspiration" file="graphics/icons/charlist_inspiration.png" />
+
+	<!-- Powers -->
+	  <icon name="usepower" file="graphics/icons/usepower.png" />
+	 <icon name="spell_cast" file="graphics/icons/spell_cast.png" />
+	 <icon name="spell_damage" file="graphics/icons/spell_damage.png" />
+	 <icon name="spell_heal" file="graphics/icons/spell_heal.png" />
+	 <icon name="spell_effect" file="graphics/icons/spell_effect.png" />
