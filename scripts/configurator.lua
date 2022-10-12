@@ -1,5 +1,3 @@
-
-
 -- ***********************************************************************
 -- **																	**
 -- **	  	 Local: Declares all variables								**
@@ -9,13 +7,11 @@
 
 local outputResult = nil;
 local messageResult = nil;
-local sUseFontTheme = nil;
-local sUseIconTheme = nil;
+
 local sTempIcon = nil;
 local sTempFont = nil;
 
-local boolDebug = "off";
-
+local bDebug = false;
 local bBIDI = false
 -- ***********************************************************************
 -- **																	**
@@ -36,9 +32,13 @@ function onInit()
 	messageResult = ActionsManager.messageResult;
 	ActionsManager.outputResult = customOutputResult;
 
-	OptionsManager.registerCallback("CHATICONTHEME", changeOptions);
-	OptionsManager.registerCallback("CHATFONTCOLORS", changeOptions);
-	changeOptions()
+	OptionsManager.registerCallback("CHATICONTHEME", changeIconTheme);
+	OptionsManager.registerCallback("CHATFONTCOLORS", changeFontTheme);
+	--OptionsManager.registerCallback("CHATGMICON", changeGMIcon);
+	--OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon);
+	changeIconTheme()
+	changeFontTheme()
+	--changeGMIcon()
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true;
@@ -53,8 +53,86 @@ end
 function onClose()
 	ActionsManager.outputResult = outputResult;
 	ActionsManager.messageResult = messageResult;
-	OptionsManager.unregisterCallback("CHATICONTHEME", changeOptions);
-	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeOptions);
+	OptionsManager.unregisterCallback("CHATICONTHEME", changeIconTheme);
+	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeFontTheme);
+	--OptionsManager.unregisterCallback("CHATGMICON", changeGMIcon);
+	--OptionsManager.unregisterCallback("CHATGMICONCOLOR", changeGMIcon);
+end
+
+
+-- ***********************************************************************
+-- **																	**
+-- **	  Function: registerChatOptions()								**
+-- **	Parameters:	None												**
+-- **	   Returns: Nothing												**
+-- **	     Notes: Registers all options used by this extension		**
+-- **																	**
+-- ***********************************************************************
+
+function registerChatOptions()
+	-- ** Set the Theme **
+	OptionsManager.registerOption2(
+	"CHATICONTHEME",
+	 	false,
+	 	"option_header_chat_aesthetics_configurator",
+	 	"option_label_CHATICONTHEME",
+	 	"option_entry_cycler",
+	 	{
+	 		--labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_portraits|option_val_theme_off",
+	 		--values = "simple|hex|round|square|portraits|off",
+			labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_dots",
+	 		values = "simple|hex|round|square|dots",
+			baselabel = "option_val_theme_off",
+	 		baseval = "off",
+	 		default = "simple"
+	 	}
+	);
+
+	-- ** Set the Font **
+	OptionsManager.registerOption2(
+		"CHATFONTCOLORS",
+		false,
+		"option_header_chat_aesthetics_configurator",
+		"option_label_CHATUSEFONTCOLORS",
+		"option_entry_cycler",
+		{
+			labels = "option_val_font_dark|option_val_font_light|option_val_font_hearth",
+			values = "dark|light|hearth",
+			baselabel = "option_val_font_off",
+			baseval = "off",
+			default = "dark"
+		}
+	);
+
+	-- ** Set the GM Icon **
+    -- OptionsManager.registerOption2(
+    --     "CHATGMICON",
+    --     false,
+    --     "option_header_chat_aesthetics_configurator",
+    --     "option_label_CHATGMICON",
+    --     "option_entry_cycler",
+    --     {
+    --         labels = "option_val_gmicon_dm|option_val_gmicon_gm|option_val_gmicon_skull",
+    --         values = "dm|gm|skull",
+	--         baselabel = "option_val_gmicon_default",
+    --         baseval = "default",
+    --         default = "default"
+    --     }
+    -- );
+    -- OptionsManager.registerOption2(
+    --     "CHATGMICONCOLOR",
+    --     false,
+    --     "option_header_chat_aesthetics_configurator",
+    --     "option_label_CHATGMICONCOLOR",
+    --     "option_entry_cycler",
+    --     {
+    --         labels = "option_val_gmicon_blood|option_val_gmicon_blue|option_val_gmicon_green|option_val_gmicon_purple|option_val_gmicon_red",
+    --         values = "blood|blue|green|purple|red",
+	--         baselabel = "option_val_gmicon_black",
+    --         baseval = "black",
+    --         default = "black"
+    --     }
+    -- );
 end
 
 -- ***********************************************************************
@@ -73,7 +151,7 @@ end
 function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer)
 
 	-- *** DEBUG Let's see WTF is happening *** --
-	if (boolDebug == "on") then
+	if bDebug then
 		Debug.console("---------------------------------------------------");
 		Debug.console("------------------- BEGIN DEBUG -------------------");
 		Debug.console("---------------------------------------------------");
@@ -108,9 +186,7 @@ function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer
 		-- *************************************** --
 		
 		-- Set the theme
-		if (sUseFontTheme == "off") then
-			-- set nothing'
-		else
+		if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
 			-- now set the new fonts
 			if (rMessageGM.icon == "roll_attack_hit") then
 				-- it is a normal hit... 
@@ -174,33 +250,27 @@ function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer
 				-- it is a fumble... reset things to a fumble
 				rMessageGM.icon = "roll_attack_fumble" .. sTempIcon;
 				rMessagePlayer.icon = "roll_attack_fumble" .. sTempIcon;
-			end
-					
+			end		
 		elseif (rMessageGM.icon == "roll_attack_crit") then
 			-- it is a critical hit... set the stuff for crit
 			rMessageGM.icon = "roll_attack_crit" .. sTempIcon;
 			rMessagePlayer.icon = "roll_attack_crit" .. sTempIcon;
-
 		elseif (rMessageGM.icon == "roll_damage") then
 			-- it is a dammage roll
 			rMessageGM.icon = "roll_damage" .. sTempIcon;
 			rMessagePlayer.icon = "roll_damage" .. sTempIcon;
-
 		elseif (rMessageGM.icon == "roll_cast") then
 			-- it is a cast roll
 			rMessageGM.icon = "roll_cast" .. sTempIcon;
 			rMessagePlayer.icon = "roll_cast" .. sTempIcon;
-
 		elseif (rMessageGM.icon == "roll_heal") then
 			-- it is a heal roll
 			rMessageGM.icon = "roll_heal" .. sTempIcon;
 			rMessagePlayer.icon = "roll_heal" .. sTempIcon;
-
 		elseif (rMessageGM.icon == "roll_effect") then
 			-- it is an effect roll
 			rMessageGM.icon = "roll_effect" .. sTempIcon;
 			rMessagePlayer.icon = "roll_effect" .. sTempIcon;
-
 		end
 		-- ********* END CHANGE THE ICONS ******** --
 
@@ -256,69 +326,6 @@ end
 
 -- ***********************************************************************
 -- **																	**
--- **	  Function: registerChatOptions()								**
--- **	Parameters:	None												**
--- **	   Returns: Nothing												**
--- **	     Notes: Registers all options used by this extension		**
--- **																	**
--- ***********************************************************************
-
-function registerChatOptions()
-	-- ** Set the Theme **
-	OptionsManager.registerOption2(
-	"CHATICONTHEME",
-	 	false,
-	 	"option_header_chat_aesthetics_configurator",
-	 	"option_label_CHATICONTHEME",
-	 	"option_entry_cycler",
-	 	{
-	 		--labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_portraits|option_val_theme_off",
-	 		--values = "simple|hex|round|square|portraits|off",
-			labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_dots",
-	 		values = "simple|hex|round|square|dots",
-			baselabel = "option_val_theme_off",
-	 		baseval = "off",
-	 		default = "simple"
-	 	}
-	);
-
-	-- ** Set the Font **
-	OptionsManager.registerOption2(
-		"CHATFONTCOLORS",
-		false,
-		"option_header_chat_aesthetics_configurator",
-		"option_label_CHATUSEFONTCOLORS",
-		"option_entry_cycler",
-		{
-			labels = "option_val_font_dark|option_val_font_light|option_val_font_hearth",
-			values = "dark|light|hearth",
-			baselabel = "option_val_font_off",
-			baseval = "off",
-			default = "dark"
-		}
-	);
-
-	-- ** Set the GM Icon **
-    -- OptionsManager.registerOption2(
-    --     "CHATGMICON",
-    --     false,
-    --     "option_header_chat_aesthetics_configurator",
-    --     "option_label_CHATGMICON",
-    --     "option_entry_cycler",
-    --     {
-    --         labels = "option_val_gmicon_default|option_val_gmicon_round|option_val_gmicon_hex",
-    --         values = "default|round|hex",
-    --         baselabel = "option_val_gmicon_default",
-    --         baseval = "default",
-    --         default = "default"
-    --     }
-    -- );
-
-end
-
-
--- ***********************************************************************
--- **																	**
 -- **	  Function: changeChatTheme										**
 -- **	Parameters:	None												**
 -- **	   Returns: Nothing												**
@@ -371,26 +378,8 @@ function customMessageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlay
 	messageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
 end
 
-	-- *************************************** --
-	-- **	GET OPTION						** --
-	-- *************************************** --
-function changeOptions()
-	sUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
-	sUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
-
-
-		--set the string
-	if (sUseFontTheme == "hearth") then
-		sTempFont = "_hearth";
-	elseif (sUseFontTheme == "light") then
-		sTempFont = "_light";
-	elseif (sUseFontTheme == "dark") then
-		sTempFont = "_dark";
-	else
-		sTempFont = "";
-	end
-
-	--set the string
+function changeIconTheme()
+	local sUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
 	if (sUseIconTheme == "hex") then
 		sTempIcon = "_hex";
 	elseif (sUseIconTheme == "simple") then
@@ -403,5 +392,40 @@ function changeOptions()
 		sTempIcon = "_dots";
 	else
 		sTempIcon = "";
+	end
+
+end
+
+function changeFontTheme()
+	local sUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
+
+		--set the string
+	if (sUseFontTheme == "hearth") then
+		sTempFont = "_hearth";
+	elseif (sUseFontTheme == "light") then
+		sTempFont = "_light";
+	elseif (sUseFontTheme == "dark") then
+		sTempFont = "_dark";
+	else
+		sTempFont = "";
+	end
+
+end
+
+function changeGMIcon()
+	local sUseGMIcon = OptionsManager.getOption("CHATGMICON");
+	local sUseGMIconColor = OptionsManager.getOption("CHATGMICONCOLOR");
+	if (sUseGMIcon == "default") then
+	elseif (sUseGMIcon == "skull") then
+	elseif (sUseGMIcon == "gm") then
+	elseif (sUseGMIcon == "dm") then
+	end
+
+	if (sUseGMIconColor == "black") then
+	elseif (sUseGMIconColor == "blood") then
+	elseif (sUseGMIconColor == "blue") then
+	elseif (sUseGMIconColor == "green") then
+	elseif (sUseGMIconColor == "purple") then
+	elseif (sUseGMIconColor == "red") then
 	end
 end

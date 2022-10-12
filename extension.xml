@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<root version="1.0" release="1">
+<root version="3.0" release="3.0">
 	<properties>
 		<name>Feature: Chat Aesthetics Configurator</name>
 		<version>1.1</version>		
 		<author>Drowbe</author>
 		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>	
 		<loadorder>10</loadorder>
-		<ruleset>Any</ruleset>
 	</properties>
-	<announcement text="Drowbe's Chat Aesthetics Configurator v1.1\rMaintained by: rhagelstrom 2021-2022" icon="drowbe_brand" font="emotefont"/>
+	<announcement text="Drowbe's Chat Aesthetics Configurator v1.1\rMaintained by: Ryan Hagelstrom 2021-2022" icon="drowbe_brand" font="emotefont"/>
 	<!-- 
 		ATTRIBUTION 
 	
@@ -59,6 +58,5 @@
 		<!-- ******************************************************************** -->
 
 		<script name="Configurator" file="scripts/configurator.lua" />
-
 	</base>
 </root>
