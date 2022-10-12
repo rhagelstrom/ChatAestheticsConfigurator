@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="1.0" release="1">
+	<properties>
+		<name>Chat Aesthetics Configurator</name>
+		<version>1.00</version>		
+		<author>Drowbe</author>
+		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>	
+		<loadorder>1501</loadorder>
+		<ruleset>Any</ruleset>
+	</properties>
+	<announcement text="Drowbe's Chat Aesthetics Configurator v1.00" icon="drowbe_brand" font="chatfont"/>
+	<!-- 
+		ATTRIBUTION 
+	
+		This extension is based on an extension bu valeros, found in the forums:
+		https://www.fantasygrounds.com/forums/showthread.php?56332-Chat-Window-Attack-Rolls-Big-Icons-Fonts-and-Color-Great-for-TV-use
+	
+		It would not be possible without the guidance and contributions of many kind, smarter contibutors who have
+		tolerated my fumbling through figuring this out including, but not limited to: valeros, Siremotte, John Waite,
+		and many other.
+
+	-->
+	<base>
+
+		<!-- LOAD THE THEME SETTINGS - uncomment ones of the below to choose the theme -->
+		
+		<!-- ******************************************************************** -->
+		<!-- **                  LOAD THE BRAND ICON                           ** -->
+		<!-- ******************************************************************** -->
+
+		<icon name="drowbe_brand" file="brand/brand.png" />
+
+		<!-- ******************************************************************** -->
+		<!-- **                   LOAD THE GM ICON                             ** -->
+		<!-- ******************************************************************** -->
+
+		<includefile source="themes/theme_gm_icons.xml"/>
+
+		<!-- ******************************************************************** -->
+		<!-- **                  LOAD THE ICON THEMES                          ** -->
+		<!-- ******************************************************************** -->
+
+		<includefile source="themes/theme_icons.xml"/>
+
+		<!-- ******************************************************************** -->
+		<!-- **                 LOAD THE FONTS THEMEs                          ** -->
+		<!-- ******************************************************************** -->
+
+		<includefile source="themes/theme_fonts.xml"/>
+
+		<!-- ******************************************************************** -->
+		<!-- **                   LOAD THE STRINGS                             ** -->
+		<!-- ******************************************************************** -->
+
+		<includefile source="strings/strings.xml"/>
+
+		<!-- ******************************************************************** -->
+		<!-- **                   LOAD THE SCRIPTS                             ** -->
+		<!-- ******************************************************************** -->
+
+		<script name="Configurator" file="scripts/configurator.lua" />
+
+	</base>
+</root>

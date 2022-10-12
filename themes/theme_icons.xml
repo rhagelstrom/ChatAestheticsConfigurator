@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	
+	<!--  Map all of the icons -->
+
+	<!--  ***********  GLOBAL NON-CHANGEABLE? ICONS ***********  -->
+
+	<icon name="usepower" file="themes/icons/global/usepower.png" />
+	<icon name="charlist_inspiration" file="themes/icons/global/charlist_inspiration.png" />
+	<icon name="effect" file="themes/icons/global/effect.png" />	
+	<icon name="effect_expired" file="themes/icons/global/effect_expired.png" />	
+	<icon name="roll_effect" file="themes/icons/global/roll_effect.png" />
+
+	<!--  ***********  SIMPLE ICONS ***********  -->
+
+	<!-- ROLLS -->
+	<icon name="roll_attack_simple" file="themes/icons/simple/roll_attack.png" />
+	<icon name="roll_attack_hit_simple" file="themes/icons/simple/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_simple" file="themes/icons/simple/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_simple" file="themes/icons/simple/roll_attack_crit.png" />
+	<icon name="roll_attack_fumble_simple" file="themes/icons/simple/roll_attack_fumble.png" />
+	<icon name="roll_cast_simple" file="themes/icons/simple/roll_cast.png" />
+	<icon name="roll_damage_simple" file="themes/icons/simple/roll_damage.png" />	
+	<icon name="roll_heal_simple" file="themes/icons/simple/roll_heal.png" />
+	<icon name="roll_effect_simple" file="themes/icons/simple/roll_effect.png" />
+
+	<!-- SPELLS -->
+
+	<icon name="spell_cast_simple" file="themes/icons/simple/spell_cast.png" />
+	<icon name="spell_damage_simple" file="themes/icons/simple/spell_damage.png" />
+	<icon name="spell_heal_simple" file="themes/icons/simple/spell_heal.png" />
+	<icon name="spell_effect_simple" file="themes/icons/simple/spell_effect.png" />		
+
+
+	<!--  ***********  HEX ICONS ***********  -->
+
+	<!-- ROLLS -->
+	<icon name="roll_attack_hex" file="themes/icons/hex/roll_attack.png" />
+	<icon name="roll_attack_hit_hex" file="themes/icons/hex/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_hex" file="themes/icons/hex/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_hex" file="themes/icons/hex/roll_attack_crit.png" />	
+	<icon name="roll_attack_fumble_hex" file="themes/icons/hex/roll_attack_fumble.png" />
+	<icon name="roll_cast_hex" file="themes/icons/hex/roll_cast.png" />
+	<icon name="roll_damage_hex" file="themes/icons/hex/roll_damage.png" />	
+	<icon name="roll_heal_hex" file="themes/icons/hex/roll_heal.png" />
+	<icon name="roll_effect_hex" file="themes/icons/hex/roll_effect.png" />
+
+	<!-- SPELLS -->
+	
+	<icon name="spell_cast_hex" file="themes/icons/hex/spell_cast.png" />
+	<icon name="spell_damage_hex" file="themes/icons/hex/spell_damage.png" />
+	<icon name="spell_heal_hex" file="themes/icons/hex/spell_heal.png" />
+	<icon name="spell_effect_hex" file="themes/icons/hex/spell_effect.png" />		
+
+	<!--  ***********  ROUND ICONS ***********  -->
+
+	<!-- ROLLS -->
+	<icon name="roll_attack_round" file="themes/icons/round/roll_attack.png" />
+	<icon name="roll_attack_hit_round" file="themes/icons/round/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_round" file="themes/icons/round/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_round" file="themes/icons/round/roll_attack_crit.png" />	
+	<icon name="roll_attack_fumble_round" file="themes/icons/round/roll_attack_fumble.png" />
+	<icon name="roll_cast_round" file="themes/icons/round/roll_cast.png" />
+	<icon name="roll_damage_round" file="themes/icons/round/roll_damage.png" />	
+	<icon name="roll_heal_round" file="themes/icons/round/roll_heal.png" />
+	<icon name="roll_effect_round" file="themes/icons/round/roll_effect.png" />
+
+	<!-- SPELLS -->
+	
+	<icon name="spell_cast_round" file="themes/icons/round/spell_cast.png" />
+	<icon name="spell_damage_round" file="themes/icons/round/spell_damage.png" />
+	<icon name="spell_heal_round" file="themes/icons/round/spell_heal.png" />
+	<icon name="spell_effect_round" file="themes/icons/round/spell_effect.png" />		
+
+	<!--  ***********  SQUARE ICONS ***********  -->
+
+	<!-- ROLLS -->
+	<icon name="roll_attack_square" file="themes/icons/square/roll_attack.png" />
+	<icon name="roll_attack_hit_square" file="themes/icons/square/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_square" file="themes/icons/square/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_square" file="themes/icons/square/roll_attack_crit.png" />	
+	<icon name="roll_attack_fumble_square" file="themes/icons/square/roll_attack_fumble.png" />
+	<icon name="roll_cast_square" file="themes/icons/square/roll_cast.png" />
+	<icon name="roll_damage_square" file="themes/icons/square/roll_damage.png" />	
+	<icon name="roll_heal_square" file="themes/icons/square/roll_heal.png" />
+	<icon name="roll_effect_square" file="themes/icons/square/roll_effect.png" />
+
+	<!-- SPELLS -->
+	
+	<icon name="spell_cast_square" file="themes/icons/square/spell_cast.png" />
+	<icon name="spell_damage_square" file="themes/icons/square/spell_damage.png" />
+	<icon name="spell_heal_square" file="themes/icons/square/spell_heal.png" />
+	<icon name="spell_effect_square" file="themes/icons/square/spell_effect.png" />	
+
+	<!--  ***********  SMALL DOTS ICONS ***********  -->
+
+	<!-- ROLLS -->
+	<icon name="roll_attack_dots" file="themes/icons/dots/roll_attack.png" />
+	<icon name="roll_attack_hit_dots" file="themes/icons/dots/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_dots" file="themes/icons/dots/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_dots" file="themes/icons/dots/roll_attack_crit.png" />	
+	<icon name="roll_attack_fumble_dots" file="themes/icons/dots/roll_attack_fumble.png" />
+	<icon name="roll_cast_dots" file="themes/icons/dots/roll_cast.png" />
+	<icon name="roll_damage_dots" file="themes/icons/dots/roll_damage.png" />	
+	<icon name="roll_heal_dots" file="themes/icons/dots/roll_heal.png" />
+	<icon name="roll_effect_dots" file="themes/icons/dots/roll_effect.png" />
+
+	<!-- SPELLS -->
+	
+	<icon name="spell_cast_dots" file="themes/icons/dots/spell_cast.png" />
+	<icon name="spell_damage_dots" file="themes/icons/dots/spell_damage.png" />
+	<icon name="spell_heal_dots" file="themes/icons/dots/spell_heal.png" />
+	<icon name="spell_effect_dots" file="themes/icons/dots/spell_effect.png" />	
+
+
+</root>
