@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
     steps:
-    - name: Checkout Repo Assetss
+    - name: Checkout Repo Assets
       uses: actions/checkout@v3
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
@@ -25,10 +25,13 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         filename: ${{ github.event.repository.name }}${{ env.EXTENSION }}])
-        exclusions: '*.git* /*node_modules/* .editorconfig body.md *.psd *.xcf forge-thumbnail.png *.md *.pdf LICENSE *.DS_Store* _resources/*'
+        #filename: 'Chat\ Aesthetics\ Configurator.ext'
+        exclusions: '*.git* /*node_modules/* .editorconfig body.md *.psd *.pxd *.xcf forge-thumbnail.png *.md *.txt *.pdf LICENSE *.DS_Store* *.resources*'
     - name: Add .ext File to Release
       uses: ncipollo/release-action@v1
       with:
+        #artifacts: "Chat Aesthetics Configurator.ext"
         artifacts: ${{ github.event.repository.name }}${{ env.EXTENSION }}])
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
+              
