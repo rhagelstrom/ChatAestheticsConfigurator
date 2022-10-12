@@ -151,7 +151,6 @@ function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer
 		-- *************************************** --
 		-- **	CHANGE THE FONTS 				** --
 		-- *************************************** --
-		
 		-- Set the theme
 		if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
 			-- now set the new fonts
