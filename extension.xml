@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root version="1.0" release="1">
 	<properties>
-		<name>Chat Aesthetics Configurator</name>
-		<version>1.00</version>		
+		<name>Feature: Chat Aesthetics Configurator</name>
+		<version>1.01</version>		
 		<author>Drowbe</author>
 		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>	
-		<loadorder>1501</loadorder>
+		<loadorder>10</loadorder>
 		<ruleset>Any</ruleset>
 	</properties>
-	<announcement text="Drowbe's Chat Aesthetics Configurator v1.00" icon="drowbe_brand" font="chatfont"/>
+	<announcement text="Drowbe's Chat Aesthetics Configurator v1.01" icon="drowbe_brand" font="chatfont"/>
 	<!-- 
 		ATTRIBUTION 
 	

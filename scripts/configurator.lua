@@ -8,6 +8,7 @@
 -- ***********************************************************************
 
 local outputResult = nil;
+local messageResult = nil;
 local strUseFontTheme = nil;
 local strUseIconTheme = nil;
 local strTempIcon = nil;
@@ -15,7 +16,7 @@ local strTempFont = nil;
 
 local boolDebug = "off";
 
-
+local bBIDI = false
 -- ***********************************************************************
 -- **																	**
 -- **	  Function: onInit()											**
@@ -34,8 +35,19 @@ function onInit()
     changeChatTheme();
 	-- Change all of the icons and fonts based on the hit ans settings
 	outputResult = ActionsManager.outputResult;
+	messageResult = ActionsManager.messageResult;
+	ActionsManager.messageResult = customMessageResult;
 	ActionsManager.outputResult = swapThemeCollateral;
 
+	OptionsManager.registerCallback("CHATICONTHEME", changeOptions);
+	OptionsManager.registerCallback("CHATFONTCOLORS", changeOptions);
+	changeOptions()
+	for _,sName in pairs(Extension.getExtensions()) do
+		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
+			bBIDI = true;
+			break;
+		end
+	end
 end
 
 
@@ -84,28 +96,11 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 
 	-- check the chat message for hits and misses
 	if (rMessageGM and rMessagePlayer) then
-		
-		-- *************************************** --
-		-- **	GET OPTION						** --
-		-- *************************************** --
-
-		strUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
-		strUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
 
 		-- *************************************** --
 		-- **	CHANGE THE FONTS 				** --
 		-- *************************************** --
-
-		--set the string
-		if (strUseFontTheme == "hearth") then
-			strTempFont = "_hearth";
-		elseif (strUseFontTheme == "light") then
-			strTempFont = "_light";
-		elseif (strUseFontTheme == "dark") then
-			strTempFont = "_dark";
-		else
-			strTempFont = "";
-		end
+		
 		-- Set the theme
 		if (strUseFontTheme == "off") then
 			-- set nothing'
@@ -157,20 +152,6 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 		-- **	CHANGE THE ICONS 				** --
 		-- *************************************** --
 		
-		--set the string
-		if (strUseIconTheme == "hex") then
-			strTempIcon = "_hex";
-		elseif (strUseIconTheme == "simple") then
-			strTempIcon = "_simple";
-		elseif (strUseIconTheme == "round") then
-			strTempIcon = "_round";
-		elseif (strUseIconTheme == "square") then
-			strTempIcon = "_square";
-		elseif (strUseIconTheme == "dots") then
-			strTempIcon = "_dots";
-		else
-			strTempIcon = "";
-		end
 
 		-- now set the new icons
 		if (rMessageGM.icon == "roll_attack_hit") then
@@ -184,7 +165,6 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 			-- set things to a miss
 			rMessageGM.icon = "roll_attack_miss" .. strTempIcon;
 			rMessagePlayer.icon = "roll_attack_miss" .. strTempIcon;
-
 			-- now that it is a miss, see if it is a fumble
 			if string.match(rMessageGM.text, "%[AUTOMATIC MISS%]") then
 				-- it is a fumble... reset things to a fumble
@@ -195,7 +175,7 @@ function swapThemeCollateral(bTower, rSource, rTarget, rMessageGM, rMessagePlaye
 		elseif (rMessageGM.icon == "roll_attack_crit") then
 			-- it is a critical hit... set the stuff for crit
 			rMessageGM.icon = "roll_attack_crit" .. strTempIcon;
-			rMessagePlayer.icon = "roll_attack" .. strTempIcon;
+			rMessagePlayer.icon = "roll_attack_crit" .. strTempIcon;
 
 		elseif (rMessageGM.icon == "roll_damage") then
 			-- it is a dammage roll
@@ -383,4 +363,48 @@ function changeChatTheme()
 		--Debug.console("** ELSE DEFAULT ** ");
 	-- end
 
+end
+function customMessageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
+	local bHideBIDIOutput = (bBIDI and rMessagePlayer.text:match("Bardic Inspiration"));
+	if bHideBIDIOutput and (rMessagePlayer.icon:match("roll_attack_hit_") or rMessagePlayer.icon:match("roll_attack_miss_")) then
+		rMessagePlayer.icon = "roll_attack" .. strTempIcon
+		rMessagePlayer.font = "msgfont"
+	end
+	messageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
+end
+
+	-- *************************************** --
+	-- **	GET OPTION						** --
+	-- *************************************** --
+function changeOptions()
+	strUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
+	strUseIconTheme = OptionsManager.getOption("CHATICONTHEME");
+
+
+		--set the string
+	if (strUseFontTheme == "hearth") then
+		strTempFont = "_hearth";
+	elseif (strUseFontTheme == "light") then
+		strTempFont = "_light";
+	elseif (strUseFontTheme == "dark") then
+		strTempFont = "_dark";
+	else
+		strTempFont = "";
+	end
+
+	--set the string
+	if (strUseIconTheme == "hex") then
+		strTempIcon = "_hex";
+	elseif (strUseIconTheme == "simple") then
+		strTempIcon = "_simple";
+	elseif (strUseIconTheme == "round") then
+		strTempIcon = "_round";
+	elseif (strUseIconTheme == "square") then
+		strTempIcon = "_square";
+	elseif (strUseIconTheme == "dots") then
+		strTempIcon = "_dots";
+	else
+		strTempIcon = "";
+	end
+		
 end
