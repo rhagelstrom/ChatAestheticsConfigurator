@@ -34,11 +34,10 @@ function onInit()
 
 	OptionsManager.registerCallback("CHATICONTHEME", changeIconTheme);
 	OptionsManager.registerCallback("CHATFONTCOLORS", changeFontTheme);
-	--OptionsManager.registerCallback("CHATGMICON", changeGMIcon);
-	--OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon);
+
 	changeIconTheme()
 	changeFontTheme()
-	--changeGMIcon()
+
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true;
@@ -55,8 +54,6 @@ function onClose()
 	ActionsManager.messageResult = messageResult;
 	OptionsManager.unregisterCallback("CHATICONTHEME", changeIconTheme);
 	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeFontTheme);
-	--OptionsManager.unregisterCallback("CHATGMICON", changeGMIcon);
-	--OptionsManager.unregisterCallback("CHATGMICONCOLOR", changeGMIcon);
 end
 
 
@@ -103,36 +100,6 @@ function registerChatOptions()
 			default = "dark"
 		}
 	);
-
-	-- ** Set the GM Icon **
-    -- OptionsManager.registerOption2(
-    --     "CHATGMICON",
-    --     false,
-    --     "option_header_chat_aesthetics_configurator",
-    --     "option_label_CHATGMICON",
-    --     "option_entry_cycler",
-    --     {
-    --         labels = "option_val_gmicon_dm|option_val_gmicon_gm|option_val_gmicon_skull",
-    --         values = "dm|gm|skull",
-	--         baselabel = "option_val_gmicon_default",
-    --         baseval = "default",
-    --         default = "default"
-    --     }
-    -- );
-    -- OptionsManager.registerOption2(
-    --     "CHATGMICONCOLOR",
-    --     false,
-    --     "option_header_chat_aesthetics_configurator",
-    --     "option_label_CHATGMICONCOLOR",
-    --     "option_entry_cycler",
-    --     {
-    --         labels = "option_val_gmicon_blood|option_val_gmicon_blue|option_val_gmicon_green|option_val_gmicon_purple|option_val_gmicon_red",
-    --         values = "blood|blue|green|purple|red",
-	--         baselabel = "option_val_gmicon_black",
-    --         baseval = "black",
-    --         default = "black"
-    --     }
-    -- );
 end
 
 -- ***********************************************************************
@@ -317,7 +284,7 @@ function customOutputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer
 		-- end
 
 		-- ********* END CHANGE EFFECTS ICONS ******** --
-		
+	
 	end
 
 	-- send it to the chat window... woot
@@ -398,34 +365,13 @@ end
 
 function changeFontTheme()
 	local sUseFontTheme = OptionsManager.getOption("CHATFONTCOLORS");
-
-		--set the string
 	if (sUseFontTheme == "hearth") then
 		sTempFont = "_hearth";
 	elseif (sUseFontTheme == "light") then
 		sTempFont = "_light";
 	elseif (sUseFontTheme == "dark") then
-		sTempFont = "_dark";
+	    sTempFont = "_dark";
 	else
 		sTempFont = "";
-	end
-
-end
-
-function changeGMIcon()
-	local sUseGMIcon = OptionsManager.getOption("CHATGMICON");
-	local sUseGMIconColor = OptionsManager.getOption("CHATGMICONCOLOR");
-	if (sUseGMIcon == "default") then
-	elseif (sUseGMIcon == "skull") then
-	elseif (sUseGMIcon == "gm") then
-	elseif (sUseGMIcon == "dm") then
-	end
-
-	if (sUseGMIconColor == "black") then
-	elseif (sUseGMIconColor == "blood") then
-	elseif (sUseGMIconColor == "blue") then
-	elseif (sUseGMIconColor == "green") then
-	elseif (sUseGMIconColor == "purple") then
-	elseif (sUseGMIconColor == "red") then
 	end
 end

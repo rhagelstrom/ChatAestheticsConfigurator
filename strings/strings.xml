@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root>
-   
    <!-- SETTINGS SECTION TITLE -->
    
     <string name="option_header_chat_aesthetics_configurator">Chat Aesthetics Configurator</string>
@@ -31,17 +30,4 @@
     <string name="option_val_theme_square">Square</string>
     <string name="option_val_theme_dots">Small Dots</string>
     <string name="option_val_theme_portraits">Player Portraits</string>
-
-    <!-- GM Icon Theme Options-->
-    <string name="option_val_gmicon_default">Default</string>
-    <string name="option_val_gmicon_skull">Skull</string>
-    <string name="option_val_gmicon_gm">GM</string>
-    <string name="option_val_gmicon_dm">DM</string>
-
-    <string name="option_val_gmicon_black">Black</string>
-    <string name="option_val_gmicon_blood">Blood</string>
-    <string name="option_val_gmicon_blue">Blue</string>
-    <string name="option_val_gmicon_green">Green</string>
-    <string name="option_val_gmicon_purple">Purple</string>
-    <string name="option_val_gmicon_red">Red</string>
 </root>
