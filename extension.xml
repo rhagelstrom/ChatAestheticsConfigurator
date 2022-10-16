@@ -2,18 +2,18 @@
 <root version="3.0" release="3.0">
 	<properties>
 		<name>Feature: Chat Aesthetics Configurator</name>
-		<version>1.1</version>		
+		<version>1.1</version>
 		<author>Drowbe</author>
-		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>	
-		<loadorder>10</loadorder>
+		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>
+		<loadorder>1601</loadorder>
 	</properties>
 	<announcement text="Drowbe's Chat Aesthetics Configurator v1.1\rMaintained by: Ryan Hagelstrom 2021-2022" icon="drowbe_brand" font="emotefont"/>
-	<!-- 
-		ATTRIBUTION 
-	
+	<!--
+		ATTRIBUTION
+
 		This extension is based on an extension bu valeros, found in the forums:
 		https://www.fantasygrounds.com/forums/showthread.php?56332-Chat-Window-Attack-Rolls-Big-Icons-Fonts-and-Color-Great-for-TV-use
-	
+
 		It would not be possible without the guidance and contributions of many kind, smarter contibutors who have
 		tolerated my fumbling through figuring this out including, but not limited to: valeros, Siremotte, John Waite,
 		and many other.
@@ -22,18 +22,12 @@
 	<base>
 
 		<!-- LOAD THE THEME SETTINGS - uncomment ones of the below to choose the theme -->
-		
+
 		<!-- ******************************************************************** -->
 		<!-- **                  LOAD THE BRAND ICON                           ** -->
 		<!-- ******************************************************************** -->
 
 		<icon name="drowbe_brand" file="brand/brand.png" />
-
-		<!-- ******************************************************************** -->
-		<!-- **                   LOAD THE GM ICON                             ** -->
-		<!-- ******************************************************************** -->
-
-		<includefile source="themes/theme_gm_icons.xml"/>
 
 		<!-- ******************************************************************** -->
 		<!-- **                  LOAD THE ICON THEMES                          ** -->
