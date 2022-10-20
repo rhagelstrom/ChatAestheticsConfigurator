@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
-
-
-	<!--  Map all of the icons -->
-
 	<!-- GM  -->
 	<icon name="GMIcon_default" file="themes/gm/GMIcon_Square_skull.png" />
 	<icon name="GMIcon_dm_black" file="themes/gm/GMIcon_dm_black.png" />
@@ -47,13 +43,7 @@
 	<icon name="spell_heal_simple" file="themes/icons/simple/spell_heal.png" />
 	<icon name="spell_effect_simple" file="themes/icons/simple/spell_effect.png" />
 
-	<!-- GLOBALS FOR NOW -->
-
-	<icon name="usepower_simple" file="themes/icons/global/usepower.png" />
-	<icon name="charlist_inspiration_simple" file="themes/icons/global/charlist_inspiration.png" />
-	<icon name="effect_simple" file="themes/icons/global/effect.png" />
-	<icon name="effect_expired_simple" file="themes/icons/global/effect_expired.png" />
-	<icon name="roll_effect_simple" file="themes/icons/global/roll_effect.png" />
+	<icon name="charlist_inspiration_simple" file="themes/icons/simple/charlist_inspiration.png" />
 
 	<!--  ***********  HEX ICONS ***********  -->
 
@@ -75,13 +65,8 @@
 	<icon name="spell_heal_hex" file="themes/icons/hex/spell_heal.png" />
 	<icon name="spell_effect_hex" file="themes/icons/hex/spell_effect.png" />
 
-	<!-- GLOBALS FOR NOW -->
+	<icon name="charlist_inspiration_hex" file="themes/icons/hex/charlist_inspiration.png" />
 
-	<icon name="usepower_hex" file="themes/icons/global/usepower.png" />
-	<icon name="charlist_inspiration_hex" file="themes/icons/global/charlist_inspiration.png" />
-	<icon name="effect_hex" file="themes/icons/global/effect.png" />
-	<icon name="effect_expired_hex" file="themes/icons/global/effect_expired.png" />
-	<icon name="roll_effect_hex" file="themes/icons/global/roll_effect.png" />
 
 	<!--  ***********  ROUND ICONS ***********  -->
 
@@ -103,13 +88,7 @@
 	<icon name="spell_heal_round" file="themes/icons/round/spell_heal.png" />
 	<icon name="spell_effect_round" file="themes/icons/round/spell_effect.png" />
 
-	<!-- GLOBALS FOR NOW -->
-
-	<icon name="usepower_round" file="themes/icons/global/usepower.png" />
-	<icon name="charlist_inspiration_round" file="themes/icons/global/charlist_inspiration.png" />
-	<icon name="effect_round" file="themes/icons/global/effect.png" />
-	<icon name="effect_expired_round" file="themes/icons/global/effect_expired.png" />
-	<icon name="roll_effect_round" file="themes/icons/global/roll_effect.png" />
+	<icon name="charlist_inspiration_round" file="themes/icons/round/charlist_inspiration.png" />
 
 	<!--  ***********  SQUARE ICONS ***********  -->
 
@@ -131,13 +110,7 @@
 	<icon name="spell_heal_square" file="themes/icons/square/spell_heal.png" />
 	<icon name="spell_effect_square" file="themes/icons/square/spell_effect.png" />
 
-	<!-- GLOBALS FOR NOW -->
-
-	<icon name="usepower_square" file="themes/icons/global/usepower.png" />
-	<icon name="charlist_inspiration_square" file="themes/icons/global/charlist_inspiration.png" />
-	<icon name="effect_square" file="themes/icons/global/effect.png" />
-	<icon name="effect_expired_square" file="themes/icons/global/effect_expired.png" />
-	<icon name="roll_effect_square" file="themes/icons/global/roll_effect.png" />
+	<icon name="charlist_inspiration_square" file="themes/icons/square/charlist_inspiration.png" />
 
 	<!--  ***********  SMALL DOTS ICONS ***********  -->
 
@@ -159,12 +132,6 @@
 	<icon name="spell_heal_dots" file="themes/icons/dots/spell_heal.png" />
 	<icon name="spell_effect_dots" file="themes/icons/dots/spell_effect.png" />
 
-	<!-- GLOBALS FOR NOW -->
-
-	<icon name="usepower_dots" file="themes/icons/global/usepower.png" />
-	<icon name="charlist_inspiration_dots" file="themes/icons/global/charlist_inspiration.png" />
-	<icon name="effect_dots" file="themes/icons/global/effect.png" />
-	<icon name="effect_expired_dots" file="themes/icons/global/effect_expired.png" />
-	<icon name="roll_effect_dots" file="themes/icons/global/roll_effect.png" />
+	<icon name="charlist_inspiration_dots" file="themes/icons/dots/charlist_inspiration.png" />
 
 </root>

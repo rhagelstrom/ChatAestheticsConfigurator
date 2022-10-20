@@ -2,10 +2,13 @@ local sIcon = nil
 local sFont = nil
 local sGMIcon = nil
 local bBIDI = false
+local bInspiration = false
+
+local createEntry = nil
 local deliverChatMessage = nil
 
 local aGMIcon = {"skull","dm","gm"}
-local aFontTheme = {"hearth","light","dark"}
+local aFontTheme = {"light","dark"}
 local aIconTheme = {"hex","simple","round","square", "dots"}
 local aOverrides  = {"roll_attack", "roll_attack_hit", "roll_attack_miss", "roll_attack_crit","roll_damage","roll_cast", "roll_heal", "roll_effect" }
 
@@ -25,15 +28,29 @@ function onInit()
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true
+			OptionsManager.registerCallback("CHATICONTHEME", changeInspirationWidget)
 			break
 		end
+	end
+
+	--Inspiration
+	if User.getRulesetName() == "5E" or User.getRulesetName() == "2E" then
+		bInspiration = true
+		createEntry = CharacterListManager.createEntry
+		CharacterListManager.createEntry = customCreateEntry
 	end
 end
 
 function onClose()
 	OptionsManager.unregisterCallback("CHATICONTHEME", changeIconTheme)
 	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeFontTheme)
+	OptionsManager.unregisterCallback("CHATGMICON", changeGMIcon)
+	OptionsManager.unregisterCallback("CHATGMICONCOLOR", changeGMIcon)
 	Comm.deliverChatMessage = deliverChatMessage
+	if bInspiration then
+		OptionsManager.unregisterCallback("CHATICONTHEME", changeInspirationWidget)
+		CharacterListManager.createEntry = createEntry
+	end
 end
 
 function registerChatOptions()
@@ -59,8 +76,10 @@ function registerChatOptions()
 		"option_label_CHATUSEFONTCOLORS",
 		"option_entry_cycler",
 		{
-			labels = "option_val_font_dark|option_val_font_light|option_val_font_hearth",
-			values = "dark|light|hearth",
+			-- labels = "option_val_font_dark|option_val_font_light|option_val_font_hearth",
+			-- values = "dark|light|hearth",
+			labels = "option_val_font_dark|option_val_font_light",
+			values = "dark|light",
 			baselabel = "option_val_font_off",
 			baseval = "off",
 			default = "dark"
@@ -102,13 +121,35 @@ function customDeliverChatMessage(messagedata, tRecipients)
 	deliverChatMessage(messagedata, tRecipients)
 end
 
+function customCreateEntry(sIdentity)
+	createEntry(sIdentity)
+	replaceInspirationWidget(sIdentity)
+end
+
+function changeInspirationWidget()
+	local tIdentities = User.getAllActiveIdentities()
+	for _,sIdentity in pairs(tIdentities) do
+		replaceInspirationWidget(sIdentity)
+	end
+end
+
+function replaceInspirationWidget(sIdentity)
+	local ctrlChar = CharacterListManager.findControlForIdentity(sIdentity)
+	if ctrlChar then
+		local widget = ctrlChar.findWidget("inspiration")
+		if widget then
+			widget.setBitmap("charlist_inspiration" .. sIcon)
+			CharacterListManager_Inspiration.updateWidgets(sIdentity)
+		end
+	end
+end
+
 function changeChat(messagedata)
 	local bHideBIDIOutput = (bBIDI and messagedata.text:match("Bardic Inspiration"))
 	local bOverride = StringManager.contains(aOverrides, messagedata.icon)
 		if messagedata.icon == "portrait_gm_token" then
 			messagedata.icon = sGMIcon
 		end
-
 		if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
 			if bOverride then
 				if (messagedata.icon == "roll_attack_miss") and string.match(messagedata.text, "%[AUTOMATIC MISS%]")  then
