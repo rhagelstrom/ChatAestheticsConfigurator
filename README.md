@@ -1,19 +1,18 @@
 # Chat Aesthetics Configurator
 
-**Current Version:** 1.1
-**Updated:** 10/12/22
+**Current Version:** 1.2
+**Updated:** 10/20/22
 
 ## Options
 
 | Name| Default | Options | Notes |
 |---|---|---|---|
-|Font Theme|Dark Text|Off/Dark Text/Light Text/Hearth|Changes the chat output font theme|
+|Font Theme|Dark Text|Off/Dark Text/Light Text|Changes the chat output font theme|
 |Icon Theme|Simple|Off/Simple/Hex/Round/Square/Small Dots|Changes the icon theme to use|
 
 ### Font Themes
 
 - Off - uses the default fonts
-- Hearth - optimized for the "hearth" theme
 - Light Text - for use on dark themes
 - Dark Text - for use on light themes
 
