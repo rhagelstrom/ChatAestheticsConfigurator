@@ -6,7 +6,7 @@ local bInspiration = false
 
 local createEntry = nil
 local deliverChatMessage = nil
-
+local aGMCustom = {}
 local aGMIcon = {"skull","dm","gm"}
 local aFontTheme = {"light","dark"}
 local aIconTheme = {"hex","simple","round","square", "dots"}
@@ -225,7 +225,24 @@ function changeGMIcon()
 		sGMIcon = "GMIcon_default"
 	elseif StringManager.contains(aGMIcon, sUseGMIcon) then
 		sGMIcon = sGMIcon .. "_" .. sUseGMIcon .. "_" .. sUseGMIconColor
+	elseif StringManager.contains(aGMCustom, sUseGMIcon) then
+		sGMIcon = sGMIcon .. "_" .. sUseGMIcon
 	else
 		sGMIcon "portrait_gm_token"
 	end
+end
+
+function addFontTheme(sFontThemeLabel, sFontThemeValue)
+	OptionsManager.addOptionValue("CHATFONTCOLORS", sFontThemeLabel, sFontThemeValue)
+	table.insert(aFontTheme, sFontThemeValue)
+end
+
+function addIconTheme(sIconThemeLabel, sIconThemeValue)
+	OptionsManager.addOptionValue("CHATICONTHEME", sIconThemeLabel, sIconThemeValue)
+	table.insert(aIconTheme, sIconThemeValue)
+end
+
+function addGMPortrait(sPortraitLabel, sPortraitValue)
+	OptionsManager.addOptionValue("CHATGMICON", sPortraitLabel, sPortraitValue)
+	table.insert(aGMCustom, sPortraitValue)
 end
