@@ -51,6 +51,6 @@
 		<!-- **                   LOAD THE SCRIPTS                             ** -->
 		<!-- ******************************************************************** -->
 
-		<script name="Configurator" file="scripts/configurator.lua" />
+		<script name="DrowbeCAC" file="scripts/configurator.lua" />
 	</base>
 </root>

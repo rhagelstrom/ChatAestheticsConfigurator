@@ -35,9 +35,9 @@
 	<icon name="roll_damage_simple" file="themes/icons/simple/roll_damage.png" />
 	<icon name="roll_heal_simple" file="themes/icons/simple/roll_heal.png" />
 	<icon name="roll_effect_simple" file="themes/icons/simple/roll_effect.png" />
+	<icon name="roll_effect_expired_simple" file="themes/icons/simple/effect_expired.png" />
 
 	<!-- SPELLS -->
-
 	<icon name="spell_cast_simple" file="themes/icons/simple/spell_cast.png" />
 	<icon name="spell_damage_simple" file="themes/icons/simple/spell_damage.png" />
 	<icon name="spell_heal_simple" file="themes/icons/simple/spell_heal.png" />
@@ -57,16 +57,15 @@
 	<icon name="roll_damage_hex" file="themes/icons/hex/roll_damage.png" />
 	<icon name="roll_heal_hex" file="themes/icons/hex/roll_heal.png" />
 	<icon name="roll_effect_hex" file="themes/icons/hex/roll_effect.png" />
+	<icon name="roll_effect_expired_hex" file="themes/icons/hex/effect_expired.png" />
 
 	<!-- SPELLS -->
-
 	<icon name="spell_cast_hex" file="themes/icons/hex/spell_cast.png" />
 	<icon name="spell_damage_hex" file="themes/icons/hex/spell_damage.png" />
 	<icon name="spell_heal_hex" file="themes/icons/hex/spell_heal.png" />
 	<icon name="spell_effect_hex" file="themes/icons/hex/spell_effect.png" />
 
 	<icon name="charlist_inspiration_hex" file="themes/icons/hex/charlist_inspiration.png" />
-
 
 	<!--  ***********  ROUND ICONS ***********  -->
 
@@ -82,7 +81,6 @@
 	<icon name="roll_effect_round" file="themes/icons/round/roll_effect.png" />
 
 	<!-- SPELLS -->
-
 	<icon name="spell_cast_round" file="themes/icons/round/spell_cast.png" />
 	<icon name="spell_damage_round" file="themes/icons/round/spell_damage.png" />
 	<icon name="spell_heal_round" file="themes/icons/round/spell_heal.png" />
@@ -102,9 +100,9 @@
 	<icon name="roll_damage_square" file="themes/icons/square/roll_damage.png" />
 	<icon name="roll_heal_square" file="themes/icons/square/roll_heal.png" />
 	<icon name="roll_effect_square" file="themes/icons/square/roll_effect.png" />
+	<icon name="roll_effect_expired_square" file="themes/icons/square/effect_expired.png" />
 
 	<!-- SPELLS -->
-
 	<icon name="spell_cast_square" file="themes/icons/square/spell_cast.png" />
 	<icon name="spell_damage_square" file="themes/icons/square/spell_damage.png" />
 	<icon name="spell_heal_square" file="themes/icons/square/spell_heal.png" />
@@ -124,9 +122,9 @@
 	<icon name="roll_damage_dots" file="themes/icons/dots/roll_damage.png" />
 	<icon name="roll_heal_dots" file="themes/icons/dots/roll_heal.png" />
 	<icon name="roll_effect_dots" file="themes/icons/dots/roll_effect.png" />
+	<icon name="roll_effect_expired_dots" file="themes/icons/dots/effect_expired.png" />
 
 	<!-- SPELLS -->
-
 	<icon name="spell_cast_dots" file="themes/icons/dots/spell_cast.png" />
 	<icon name="spell_damage_dots" file="themes/icons/dots/spell_damage.png" />
 	<icon name="spell_heal_dots" file="themes/icons/dots/spell_heal.png" />

@@ -11,6 +11,7 @@ local aGMIcon = {"skull","dm","gm"}
 local aFontTheme = {"light","dark"}
 local aIconTheme = {"hex","simple","round","square", "dots"}
 local aOverrides  = {"roll_attack", "roll_attack_hit", "roll_attack_miss", "roll_attack_crit","roll_damage","roll_cast", "roll_heal", "roll_effect" }
+local aFontsTypes = {"chatfont", "emotefont", "narratorfont", "systemfont", "msgfont", "oocfont", "chatnpcfont", "chatgmfont", "whisperfont"}
 
 function onInit()
 	registerChatOptions()
@@ -147,29 +148,54 @@ end
 function changeChat(messagedata)
 	local bHideBIDIOutput = (bBIDI and messagedata.text:match("Bardic Inspiration"))
 	local bOverride = StringManager.contains(aOverrides, messagedata.icon)
-		if messagedata.icon == "portrait_gm_token" then
-			messagedata.icon = sGMIcon
-		end
-		if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
-			if bOverride then
-				if (messagedata.icon == "roll_attack_miss") and string.match(messagedata.text, "%[AUTOMATIC MISS%]")  then
-					messagedata.font = "attack_roll_fumble_msgfont" .. sFont
-				else
-					messagedata.font = messagedata.icon .. "_msgfont" .. sFont
-				end
+	if messagedata.icon == "portrait_gm_token" then
+		messagedata.icon = sGMIcon
+	end
+	if (OptionsManager.getOption("CHATFONTCOLORS") ~= "off") then
+		if (messagedata.icon == "roll_attack_hit") then
+			if bHideBIDIOutput  then
+				messagedata.font = "attack_roll_msgfont" .. sFont
+			else
+				messagedata.font = "attack_roll_hit_msgfont" .. sFont
 			end
+		elseif (messagedata.icon == "roll_attack_miss") then
+			if bHideBIDIOutput  then
+				messagedata.font = "attack_roll_msgfont" .. sFont
+			elseif string.match(messagedata.text, "%[AUTOMATIC MISS%]") then
+				messagedata.font = "attack_roll_fumble_msgfont" .. sFont
+			else
+				messagedata.font = "attack_roll_miss_msgfont" .. sFont
+			end
+		elseif (messagedata.icon == "roll_attack_crit") then
+			messagedata.font = "attack_roll_crit_msgfont" .. sFont
+		elseif (messagedata.icon == "roll_damage") then
+			messagedata.font = "dammage_roll_msgfont" .. sFont
+		elseif (messagedata.icon == "roll_cast") then
+			messagedata.font = "cast_roll_msgfont" .. sFont
+		elseif (messagedata.icon == "roll_heal") then
+			messagedata.font = "heal_roll_msgfont" .. sFont
+		elseif (messagedata.icon == "roll_effect") then
+			messagedata.font = "effect_msgfont" .. sFont
 		end
+		if StringManager.contains(aFontsTypes, messagedata.font) then
+			messagedata.font =  messagedata.font .. sFont
+		end
+	end
+	if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
 		if bOverride then
-			if (messagedata.icon == "roll_attack_miss") and string.match(messagedata.text, "%[AUTOMATIC MISS%]")  then
+			if (messagedata.icon == "roll_attack_miss") and (string.match(messagedata.text, "%[AUTOMATIC MISS%]") or string.match(messagedata.text, "%[CRITICAL MISS%]")) then
 				messagedata.icon = "roll_attack_fumble" .. sIcon
+			elseif (messagedata.icon == "roll_effect")  and string.match(messagedata.text, "%[EXPIRED%]") then
+				messagedata.icon = "roll_effect_expired" .. sIcon
 			else
 				messagedata.icon = messagedata.icon .. sIcon
 			end
+
 		end
 		if bHideBIDIOutput and messagedata.icon:match("roll_attack") then
 			messagedata.icon = "roll_attack" .. sIcon
-			messagedata.font = "msgfont"
 		end
+	end
 end
 
 function changeIconTheme()

@@ -1,271 +1,240 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
 	<!-- ***************************************** -->
-	<!-- ***************************************** -->
-	<!-- **	GLOBAL FONT SETTINGS				** -->
-	<!-- ***************************************** -->
-	<!-- ***************************************** -->
-
-	<?ignore
-	<!-- 	IGNORE THIS FOR NOW -- NOT READY FOR PRIME TIME DUE TO HEARTH -->
-
-	<!-- STANDARD FONTS -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="chatfont">
-		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
-		<color value="#261A10" />
-	</font>
-
-	<!-- EMOTES -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="emotefont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#880000" />
-	</font>
-
-	<!-- STORY QUOTE -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="narratorfont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#261A10" />
-	</font>
-
-	<!-- SYSTEM MESSGES -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="systemfont">
-		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
-		<color value="#660066" />
-	</font>
-
-	<!-- ACTION MESSGE (Attack, Saves, etc.) -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="msgfont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#660066" />
-	</font>
-
-	<!-- OUT OF CHARACTER-->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="oocfont">
-		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
-		<color value="#005500" />
-	</font>
-
-	<!-- NPC SPEECH -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="chatnpcfont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#000066" />
-	</font>
-
-	<!-- GM SPEECH -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="chatgmfont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#000000" />
-	</font>
-
-	<!-- WHISPER -->
-	<!-- Default Size: 14 -->
-	<!-- Default Color: xx -->
-	<font name="whisperfont">
-		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
-		<color value="#660066" />
-	</font>
-
-	<!-- **********************************************************************************  -->
-	?>
-
-
-	<!-- ***************************************** -->
-	<!-- ***************************************** -->
-	<!-- **	FONT THEMES							** -->
-	<!-- ***************************************** -->
-	<!-- ***************************************** -->
-
-
-	<!-- ***************************************** -->
 	<!-- **	HEARTH								** -->
 	<!-- ***************************************** -->
 
-	<!-- Critical Hit -->
+	<!-- SirMotte suggested these go away so they are until we are sure
+
 	<font name="attack_roll_crit_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#388d1e" />
 	</font>
 
-	<!-- Hit -->
 	<font name="attack_roll_hit_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#ff4f0f" />
 	</font>
 
-	<!-- Miss -->
 	<font name="attack_roll_miss_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#be6401" />
 	</font>
 
-	<!-- Fumble -->
 	<font name="attack_roll_fumble_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#08578b" />
 	</font>
 
-	<!-- Roll -->
 	<font name="attack_roll_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#6280A8" />
 	</font>
 
-	<!-- Cast -->
 	<font name="cast_roll_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#6280A8" />
 	</font>
 
-	<!-- Effect -->
 	<font name="effect_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#be5866" />
 	</font>
 
-	<!-- Dammage -->
 	<font name="dammage_roll_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#ff4f10" />
 	</font>
 
-	<!-- Heal -->
 	<font name="heal_roll_msgfont_hearth">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#388d1e" />
-	</font>
+	</font> -->
 
 	<!-- ***************************************** -->
 	<!-- **	LIGHT								** -->
 	<!-- ***************************************** -->
 
-	<!-- Critical Hit -->
 	<font name="attack_roll_crit_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#b0f566" />
 	</font>
 
-	<!-- Hit -->
 	<font name="attack_roll_hit_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#5cc9f5" />
 	</font>
 
-	<!-- Miss -->
 	<font name="attack_roll_miss_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#a67d00" />
 	</font>
 
-	<!-- Fumble -->
 	<font name="attack_roll_fumble_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#ff4f0f" />
 	</font>
 
-	<!-- Roll -->
 	<font name="attack_roll_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#ffd8c2" />
 	</font>
 
-	<!-- Cast -->
 	<font name="cast_roll_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#ffd8c2" />
 	</font>
 
-	<!-- Effect -->
 	<font name="effect_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#e34ddd" />
 	</font>
 
-	<!-- Dammage -->
 	<font name="dammage_roll_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#d80909" />
 	</font>
 
-	<!-- Heal -->
 	<font name="heal_roll_msgfont_light">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#b0f566" />
 	</font>
 
+	<font name="chatfont_light">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#261A10" />
+	</font>
+
+	<font name="emotefont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#880000" />
+	</font>
+
+	<font name="narratorfont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#261A10" />
+	</font>
+
+	<font name="systemfont_light">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#660066" />
+	</font>
+
+	<font name="msgfont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#660066" />
+	</font>
+
+	<font name="oocfont_light">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#005500" />
+	</font>
+
+	<font name="chatnpcfont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#000066" />
+	</font>
+
+	<font name="chatgmfont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#000000" />
+	</font>
+
+	<font name="whisperfont_light">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#660066" />
+	</font>
 
 	<!-- ***************************************** -->
 	<!-- **	DARK								** -->
 	<!-- ***************************************** -->
 
-	<!-- Critical Hit -->
 	<font name="attack_roll_crit_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#133803" />
 	</font>
 
-	<!-- Hit -->
 	<font name="attack_roll_hit_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#571406" />
 	</font>
 
-	<!-- Miss -->
 	<font name="attack_roll_miss_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#463a02" />
 	</font>
 
-	<!-- Fumble -->
 	<font name="attack_roll_fumble_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
 		<color value="#0b3c59" />
 	</font>
 
-	<!-- Roll -->
 	<font name="attack_roll_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#1c021f" />
 	</font>
 
-	<!-- Cast -->
 	<font name="cast_roll_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#6280A8" />
 	</font>
 
-	<!-- Effect -->
 	<font name="effect_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#530a9e" />
 	</font>
 
-	<!-- Dammage -->
 	<font name="dammage_roll_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#64110f" />
 	</font>
 
-	<!-- Heal -->
 	<font name="heal_roll_msgfont_dark">
 		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
 		<color value="#1a4107" />
 	</font>
+	<font name="chatfont_dark">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#261A10" />
+	</font>
 
+	<font name="emotefont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#880000" />
+	</font>
 
+	<font name="narratorfont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#261A10" />
+	</font>
+
+	<font name="systemfont_dark">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#660066" />
+	</font>
+
+	<font name="msgfont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#660066" />
+	</font>
+
+	<font name="oocfont_dark">
+		<ttf file="themes/fonts/Roboto-Regular.ttf" name="Roboto" size="16" />
+		<color value="#005500" />
+	</font>
+
+	<font name="chatnpcfont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#000066" />
+	</font>
+
+	<font name="chatgmfont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#000000" />
+	</font>
+
+	<font name="whisperfont_dark">
+		<ttf file="themes/fonts/Roboto-Bold.ttf" name="Roboto Bold" size="16" />
+		<color value="#660066" />
+	</font>
 </root>
