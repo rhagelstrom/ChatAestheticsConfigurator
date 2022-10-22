@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root version="3.0" release="3.0">
-	<announcement text="Drowbe's Chat Aesthetics Configurator v1.2\rMaintained by: Ryan Hagelstrom 2021-2022" icon="drowbe_brand" font="emotefont"/>
+	<announcement text="Drowbe's Chat Aesthetics Configurator v1.3\rMaintained by: Ryan Hagelstrom 2021-2022" icon="drowbe_brand" font="emotefont"/>
 	<properties>
 		<name>Feature: Chat Aesthetics Configurator</name>
-		<version>1.2</version>
+		<version>1.3</version>
 		<author>Drowbe</author>
 		<description>Changes the chat icons and fonts to align with the GMs esthetic, style, and moxy. Your mileage may vary.</description>
-		<loadorder>1601</loadorder>
+		<loadorder>1600</loadorder>
 	</properties>
 	<!--
 		ATTRIBUTION

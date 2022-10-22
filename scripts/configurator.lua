@@ -13,6 +13,8 @@ local aIconTheme = {"hex","simple","round","square", "dots"}
 local aOverrides  = {"roll_attack", "roll_attack_hit", "roll_attack_miss", "roll_attack_crit","roll_damage","roll_cast", "roll_heal", "roll_effect" }
 local aFontsTypes = {"chatfont", "emotefont", "narratorfont", "systemfont", "msgfont", "oocfont", "chatnpcfont", "chatgmfont", "whisperfont"}
 
+local aCustomThemeErrors = {}
+
 function onInit()
 	registerChatOptions()
 
@@ -22,10 +24,6 @@ function onInit()
 	OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon)
 	deliverChatMessage = Comm.deliverChatMessage
 	Comm.deliverChatMessage = customDeliverChatMessage
-
-	changeIconTheme()
-	changeFontTheme()
-	changeGMIcon()
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true
@@ -40,6 +38,13 @@ function onInit()
 		createEntry = CharacterListManager.createEntry
 		CharacterListManager.createEntry = customCreateEntry
 	end
+end
+
+function onTabletopInit()
+	changeIconTheme()
+	changeFontTheme()
+	changeGMIcon()
+	--printErrors()
 end
 
 function onClose()
@@ -228,11 +233,12 @@ function changeGMIcon()
 	elseif StringManager.contains(aGMCustom, sUseGMIcon) then
 		sGMIcon = sGMIcon .. "_" .. sUseGMIcon
 	else
-		sGMIcon "portrait_gm_token"
+		sGMIcon = "portrait_gm_token"
 	end
 end
 
 function addFontTheme(sFontThemeLabel, sFontThemeValue)
+
 	OptionsManager.addOptionValue("CHATFONTCOLORS", sFontThemeLabel, sFontThemeValue)
 	table.insert(aFontTheme, sFontThemeValue)
 end
@@ -243,6 +249,22 @@ function addIconTheme(sIconThemeLabel, sIconThemeValue)
 end
 
 function addGMPortrait(sPortraitLabel, sPortraitValue)
-	OptionsManager.addOptionValue("CHATGMICON", sPortraitLabel, sPortraitValue)
-	table.insert(aGMCustom, sPortraitValue)
+	-- local sPortrait = "GMIcon_" .. sPortraitValue
+	-- if not Interface.isIcon(sPortrait) then
+	-- 	table.insert(aCustomThemeErrors, "GM Portrait: " .. sPortrait .. " does not exist")
+	-- else
+		OptionsManager.addOptionValue("CHATGMICON", sPortraitLabel, sPortraitValue)
+		table.insert(aGMCustom, sPortraitValue)
+	-- end
+end
+
+--Probably want to think about this more. Do we want to force errors and not load
+--What if in the future we add more icon/font hooks? I don't think we want to not
+--load what a user might have as custom assets
+function printErrors()
+	local rMessage = { font = "systemfont", icon = "drowbe_brand"}
+	for _,sError in pairs(aCustomThemeErrors) do
+		rMessage.text = sError
+		Comm.addChatMessage(rMessage)
+	end
 end

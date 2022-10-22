@@ -1,7 +1,7 @@
 # Chat Aesthetics Configurator
 
-**Current Version:** 1.2
-**Updated:** 10/20/22
+**Current Version:** 1.3
+**Updated:** 10/22/22
 
 ## Options
 
