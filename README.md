@@ -35,14 +35,9 @@ If you want to get that "whole suite" feel, this extension pairs nicely with MAT
 
 I will do my best to support whatever issues come up, but at the bank-breaking price of zero gold, I can only do what I can do in my spare time. It goes without saying, but I'll say it, use the extension at your own risk.
 
-## GM Icon
+## Custom Themes
 
-- Sorry - you are stuck with the default for now... these aren't wired up to the options panel yet.
-- If you are adventurous, reverse engineer the extension.
-
-Please note that some global icons, like "effects" or "powers," will leverage the Chat Aesthetics Configurator version of the icon no matter what you choose in options. I am working on a way to let you control those icons as well, but today is not that day.
-
-For advanced users: To change any of the above with your own styles and icons, rename the extension to "Chat Aesthetics Configurator.zip" and unzip it. Edit the files and swap the icons to your heart's content. Zip it back up, rename it so whatever you want -- if not, it will get overwritten the next time Forge updates.
+The companion extension [Fireside](https://github.com/rhagelstrom/Fireside) can be used to create custom themes or custom GM icons. Fireside will allow these changes to persist even if Chat Aesthetics Configurator is updated. Fireside is not listed on the forge by design and you'll have to download it from github and make your own custom adjustments.
 
 ## Attribution
 
@@ -59,14 +54,6 @@ For advanced users: To change any of the above with your own styles and icons, r
 - Introduce a minimalist "dot" icon set for a super-clean look. (Kinda Done)
 - Add the ability to use a player portrait instead of the enhanced icons.
 - Adding themes with smaller fonts.. and different fonts.
-
-## Known Issues
-
-- Themes do not change all icons yet... mostly just the "roll" icons.
-- Some font settings don't seem to fire... like "effect."
-- Using this extension MAY change some of the icons in on the "action" tab... specifically, the "Spells" icon.
-- I am sure there are other issues.
-- Need to continue tweak the colors a bit.
 
 ## DISCLAIMER
 
