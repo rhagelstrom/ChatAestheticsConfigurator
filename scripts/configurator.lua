@@ -186,7 +186,7 @@ function changeChat(messagedata)
 			messagedata.font =  messagedata.font .. sFont
 		end
 	end
-	if (OptionsManager.getOption("CHATICONTHEME") ~= "off") then
+	if (OptionsManager.getOption("CHATICONTHEME") ~= "off") and messagedata.icon then
 		if bOverride then
 			if (messagedata.icon == "roll_attack_miss") and (string.match(messagedata.text, "%[AUTOMATIC MISS%]") or string.match(messagedata.text, "%[CRITICAL MISS%]")) then
 				messagedata.icon = "roll_attack_fumble" .. sIcon
