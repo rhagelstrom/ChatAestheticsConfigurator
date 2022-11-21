@@ -1,13 +1,15 @@
 # Chat Aesthetics Configurator
 
-**Current Version:** 1.4
-**Updated:** 11/08don/22
+**Current Version:** 1.5
+**Updated:** 11/20/22
 
 ## Options
 
 | Name| Default | Options | Notes |
 |---|---|---|---|
 |Font Theme|Dark Text|Off/Dark Text/Light Text|Changes the chat output font theme|
+|GM Icon|Default|Default/DM/GM/Skull|Changes the GM icon to use|
+|GM Icon Color|Black|Black/Blue/Green/Purple/Red/Small Dots|Changes the color of DM/GM/SKull icon types|
 |Icon Theme|Simple|Off/Simple/Hex/Round/Square/Small Dots|Changes the icon theme to use|
 
 ### Font Themes

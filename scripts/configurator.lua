@@ -6,6 +6,7 @@ local bInspiration = false
 
 local createEntry = nil
 local deliverChatMessage = nil
+local addChatMessage = nil
 local aGMCustom = {}
 local aGMIcon = {"skull","dm","gm"}
 local aFontTheme = {"light","dark"}
@@ -22,8 +23,11 @@ function onInit()
 	OptionsManager.registerCallback("CHATFONTCOLORS", changeFontTheme)
 	OptionsManager.registerCallback("CHATGMICON", changeGMIcon)
 	OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon)
+
 	deliverChatMessage = Comm.deliverChatMessage
+	addChatMessage = Comm.addChatMessage
 	Comm.deliverChatMessage = customDeliverChatMessage
+	Comm.deliverChatMessage = customAddChatMessage
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true
@@ -53,6 +57,8 @@ function onClose()
 	OptionsManager.unregisterCallback("CHATGMICON", changeGMIcon)
 	OptionsManager.unregisterCallback("CHATGMICONCOLOR", changeGMIcon)
 	Comm.deliverChatMessage = deliverChatMessage
+	Comm.addChatMessage = addChatMessage
+
 	if bInspiration then
 		OptionsManager.unregisterCallback("CHATICONTHEME", changeInspirationWidget)
 		CharacterListManager.createEntry = createEntry
@@ -127,6 +133,10 @@ function customDeliverChatMessage(messagedata, tRecipients)
 	deliverChatMessage(messagedata, tRecipients)
 end
 
+function customAddChatMessage(messagedata)
+	changeChat(messagedata)
+	addChatMessage(messagedata)
+end
 function customCreateEntry(sIdentity)
 	createEntry(sIdentity)
 	replaceInspirationWidget(sIdentity)
@@ -193,7 +203,7 @@ function changeChat(messagedata)
 			elseif (messagedata.icon == "roll_effect")  and string.match(messagedata.text, "%[EXPIRED%]") then
 				messagedata.icon = "roll_effect_expired" .. sIcon
 			else
-				messagedata.icon = messagedata.icon .. sIcon
+			 	messagedata.icon = messagedata.icon .. sIcon
 			end
 
 		end
