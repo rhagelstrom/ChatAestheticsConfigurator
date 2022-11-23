@@ -5,8 +5,11 @@ local bBIDI = false
 local bInspiration = false
 
 local createEntry = nil
-local deliverChatMessage = nil
+local onDeliverMessage = nil
+local onReceiveMessage = nil
 local addChatMessage = nil
+local deliverChatMessage = nil
+
 local aGMCustom = {}
 local aGMIcon = {"skull","dm","gm"}
 local aFontTheme = {"light","dark"}
@@ -24,10 +27,15 @@ function onInit()
 	OptionsManager.registerCallback("CHATGMICON", changeGMIcon)
 	OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon)
 
-	deliverChatMessage = Comm.deliverChatMessage
+	onDeliverMessage = ChatManager.onDeliverMessage
+	onReceiveMessage = ChatManager.onReceiveMessage
 	addChatMessage = Comm.addChatMessage
+	deliverChatMessage =  Comm.deliverChatMessage
+
+	ChatManager.onDeliverMessage = customOnDeliverMessage
+	ChatManager.onReceiveMessage = customOnReceiveMessage
+	Comm.addChatMessage = customAddChatMessage
 	Comm.deliverChatMessage = customDeliverChatMessage
-	Comm.deliverChatMessage = customAddChatMessage
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true
@@ -56,8 +64,10 @@ function onClose()
 	OptionsManager.unregisterCallback("CHATFONTCOLORS", changeFontTheme)
 	OptionsManager.unregisterCallback("CHATGMICON", changeGMIcon)
 	OptionsManager.unregisterCallback("CHATGMICONCOLOR", changeGMIcon)
-	Comm.deliverChatMessage = deliverChatMessage
 	Comm.addChatMessage = addChatMessage
+	Comm.deliverChatMessage = deliverChatMessage
+	ChatManager.onDeliverMessage = onDeliverMessage
+	ChatManager.onReceiveMessage = onReceiveMessage
 
 	if bInspiration then
 		OptionsManager.unregisterCallback("CHATICONTHEME", changeInspirationWidget)
@@ -128,15 +138,38 @@ function registerChatOptions()
     )
 end
 
-function customDeliverChatMessage(messagedata, tRecipients)
-	changeChat(messagedata)
-	deliverChatMessage(messagedata, tRecipients)
-end
-
 function customAddChatMessage(messagedata)
 	changeChat(messagedata)
 	addChatMessage(messagedata)
 end
+
+function customDeliverChatMessage(messagedata, aUsers)
+	changeChat(messagedata)
+	deliverChatMessage(messagedata, aUsers)
+end
+
+-- We can't do it with a callback
+-- because of the callback ordering and other callbacks from the ruleset
+-- overwrite out font changes
+function customOnDeliverMessage(messagedata, ...)
+ 	local ret = onDeliverMessage(messagedata, ...)
+	if messagedata and messagedata.font then
+		changeChat(messagedata)
+	end
+	return ret
+end
+
+-- We can't do it with a callback
+-- because of the callback ordering and other callbacks from the ruleset
+-- overwrite out font changes
+function customOnReceiveMessage(messagedata, ...)
+	local ret = onReceiveMessage(messagedata, ...)
+	if messagedata and messagedata.font then
+		changeChat(messagedata)
+	end
+	return ret
+end
+
 function customCreateEntry(sIdentity)
 	createEntry(sIdentity)
 	replaceInspirationWidget(sIdentity)
