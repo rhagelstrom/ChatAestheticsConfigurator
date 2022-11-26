@@ -20,12 +20,24 @@ local aFontsTypes = {"chatfont", "emotefont", "narratorfont", "systemfont", "msg
 local aCustomThemeErrors = {}
 
 function onInit()
+	--Inspiration
+	if User.getRulesetName() == "5E" or User.getRulesetName() == "2E" then
+		bInspiration = true
+		createEntry = CharacterListManager.createEntry
+		CharacterListManager.createEntry = customCreateEntry
+	end
+
 	registerChatOptions()
 
 	OptionsManager.registerCallback("CHATICONTHEME", changeIconTheme)
 	OptionsManager.registerCallback("CHATFONTCOLORS", changeFontTheme)
 	OptionsManager.registerCallback("CHATGMICON", changeGMIcon)
 	OptionsManager.registerCallback("CHATGMICONCOLOR", changeGMIcon)
+	if bInspiration then
+		OptionsManager.registerCallback("CHATICONTHEME", changeInspirationWidget)
+		OptionsManager.registerCallback("CHATINSPIRATION", changeInspirationWidget)
+
+	end
 
 	onDeliverMessage = ChatManager.onDeliverMessage
 	onReceiveMessage = ChatManager.onReceiveMessage
@@ -39,16 +51,8 @@ function onInit()
 	for _,sName in pairs(Extension.getExtensions()) do
 		if Extension.getExtensionInfo(sName).name:match("Bardic Inspiration Die") then
 			bBIDI = true
-			OptionsManager.registerCallback("CHATICONTHEME", changeInspirationWidget)
 			break
 		end
-	end
-
-	--Inspiration
-	if User.getRulesetName() == "5E" or User.getRulesetName() == "2E" then
-		bInspiration = true
-		createEntry = CharacterListManager.createEntry
-		CharacterListManager.createEntry = customCreateEntry
 	end
 end
 
@@ -71,6 +75,8 @@ function onClose()
 
 	if bInspiration then
 		OptionsManager.unregisterCallback("CHATICONTHEME", changeInspirationWidget)
+		OptionsManager.unregisterCallback("CHATINSPIRATION", changeInspirationWidget)
+
 		CharacterListManager.createEntry = createEntry
 	end
 end
@@ -136,6 +142,22 @@ function registerChatOptions()
             default = "black"
         }
     )
+	if bInspiration then
+		OptionsManager.registerOption2(
+			"CHATINSPIRATION",
+			false,
+			"option_header_chat_aesthetics_configurator",
+			"option_label_CHATINSPIRATION",
+			"option_entry_cycler",
+			{
+				labels = "option_val_inspiration_no",
+				values = "no",
+				baselabel = "option_val_inspiration_yes",
+				baseval = "yes",
+				default = "yes"
+			}
+		)
+	end
 end
 
 function customAddChatMessage(messagedata)
@@ -187,7 +209,11 @@ function replaceInspirationWidget(sIdentity)
 	if ctrlChar then
 		local widget = ctrlChar.findWidget("inspiration")
 		if widget then
-			widget.setBitmap("charlist_inspiration" .. sIcon)
+			if OptionsManager.getOption("CHATINSPIRATION") == "yes" then
+				widget.setBitmap("charlist_inspiration" .. sIcon)
+			else
+				widget.setBitmap("charlist_inspiration")
+			end
 			CharacterListManager_Inspiration.updateWidgets(sIdentity)
 		end
 	end

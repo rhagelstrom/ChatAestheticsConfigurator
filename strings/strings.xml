@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root>
-   
+
    <!-- SETTINGS SECTION TITLE -->
-   
+
     <string name="option_header_chat_aesthetics_configurator">Chat Aesthetics Configurator</string>
-    
+
     <!-- SETTING CAPTIONS -->
 
     <!-- Option Window Titles -->
     <string name="option_label_CHATICONTHEME">Icon Theme</string>
     <string name="option_label_CHATUSEFONTCOLORS">Font Theme</string>
+    <string name="option_label_CHATINSPIRATION">Change Inspiration Icon</string>
     <string name="option_label_CHATGMICON">GM Icon</string>
     <string name="option_label_CHATGMICONCOLOR">GM Icon Color</string>
-    <string name="option_label_USEPORTRAIT">Use Character Portraits</string> 
+    <string name="option_label_USEPORTRAIT">Use Character Portraits</string>
 
     <!-- OPTIONS -->
 
@@ -44,4 +45,7 @@
     <string name="option_val_gmicon_green">Green</string>
     <string name="option_val_gmicon_purple">Purple</string>
     <string name="option_val_gmicon_red">Red</string>
+
+     <string name="option_val_inspiration_no">No</string>
+     <string name="option_val_inspiration_yes">Yes</string>
 </root>

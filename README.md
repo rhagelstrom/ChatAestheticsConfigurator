@@ -1,12 +1,13 @@
 # Chat Aesthetics Configurator
 
 **Current Version:** 1.7
-**Updated:** 11/26/2
+**Updated:** 11/26/22
 
 ## Options
 
 | Name| Default | Options | Notes |
 |---|---|---|---|
+|Change Inspiration Icon|Yes|Yes/No|5E/2E: Changes the inspiration overlay icon on portrait|
 |Font Theme|Dark Text|Off/Dark Text/Light Text|Changes the chat output font theme|
 |GM Icon|Default|Default/DM/GM/Skull|Changes the GM icon to use|
 |GM Icon Color|Black|Black/Blue/Green/Purple/Red/Small Dots|Changes the color of DM/GM/SKull icon types|
