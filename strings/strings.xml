@@ -22,7 +22,7 @@
     <string name="option_val_font_off">Off</string>
     <string name="option_val_font_hearth">Hearth</string>
     <string name="option_val_font_light">Light Text</string>
-     <string name="option_val_font_dark">Dark Text</string>
+   <string name="option_val_font_dark">Dark Text</string>
 
     <!-- Icon Theme Options-->
     <string name="option_val_theme_off">Off</string>
@@ -31,6 +31,7 @@
     <string name="option_val_theme_round">Round</string>
     <string name="option_val_theme_square">Square</string>
     <string name="option_val_theme_dots">Small Dots</string>
+   <string name="option_val_theme_texthex">Text Hex</string>
     <string name="option_val_theme_portraits">Player Portraits</string>
 
     <!-- GM Icon Theme Options-->

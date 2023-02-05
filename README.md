@@ -1,7 +1,7 @@
 # Chat Aesthetics Configurator
 
-**Current Version:** 1.7
-**Updated:** 11/26/22
+**Current Version:** 1.8
+**Updated:** 02/05/23
 
 ## Options
 
@@ -11,7 +11,7 @@
 |Font Theme|Dark Text|Off/Dark Text/Light Text|Changes the chat output font theme|
 |GM Icon|Default|Default/DM/GM/Skull|Changes the GM icon to use|
 |GM Icon Color|Black|Black/Blue/Green/Purple/Red/Small Dots|Changes the color of DM/GM/SKull icon types|
-|Icon Theme|Simple|Off/Simple/Hex/Round/Square/Small Dots|Changes the icon theme to use|
+|Icon Theme|Simple|Off/Simple/Hex/Round/Square/Small Dots/Text Hex|Changes the icon theme to use|
 
 ### Font Themes
 
@@ -27,6 +27,7 @@
 - Round - uses enhanced icons with a round container
 - Square - uses enhanced icons with a square container
 - Small Dots - uses enhanced icons with a small round container
+- Text Hex - used enhanced icons with hex container and text by Remedeez
 
 ## Drowbe's Introduction
 
@@ -52,7 +53,6 @@ The companion extension [Fireside](https://github.com/rhagelstrom/Fireside) can 
 ## Drowbe's Roadmap
 
 - I am hoping to add icons for all of the conditions (e.g. grappled)... at some point.
-- Set fonts for entire chat box. (I have this wired, but it collides with themes like Hearth, so I've turned it off for now)
 - I am going to add a few more icon and font themes -- hit the forum and make suggestions.
 - Introduce a minimalist "dot" icon set for a super-clean look. (Kinda Done)
 - Add the ability to use a player portrait instead of the enhanced icons.

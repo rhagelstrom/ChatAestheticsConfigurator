@@ -132,4 +132,25 @@
 
 	<icon name="charlist_inspiration_dots" file="themes/icons/dots/charlist_inspiration.png" />
 
+	<!--  ***********  TEXT HEX ICONS ***********  -->
+
+<!-- ROLLS -->
+	<icon name="roll_attack_texthex" file="themes/icons/texthex/roll_attack.png" />
+	<icon name="roll_attack_hit_texthex" file="themes/icons/texthex/roll_attack_hit.png" />
+	<icon name="roll_attack_miss_texthex" file="themes/icons/texthex/roll_attack_miss.png" />
+	<icon name="roll_attack_crit_texthex" file="themes/icons/texthex/roll_attack_crit.png" />
+	<icon name="roll_attack_fumble_texthex" file="themes/icons/texthex/roll_attack_fumble.png" />
+	<icon name="roll_cast_texthex" file="themes/icons/texthex/roll_cast.png" />
+	<icon name="roll_damage_texthex" file="themes/icons/texthex/roll_damage.png" />
+	<icon name="roll_heal_texthex" file="themes/icons/texthex/roll_heal.png" />
+	<icon name="roll_effect_texthex" file="themes/icons/texthex/roll_effect.png" />
+	<icon name="roll_effect_expired_texthex" file="themes/icons/texthex/effect_expired.png" />
+
+	<!-- SPELLS -->
+	<icon name="spell_cast_texthex" file="themes/icons/texthex/spell_cast.png" />
+	<icon name="spell_damage_texthex" file="themes/icons/texthex/spell_damage.png" />
+	<icon name="spell_heal_texthex" file="themes/icons/texthex/spell_heal.png" />
+	<icon name="spell_effect_texthex" file="themes/icons/texthex/spell_effect.png" />
+
+	<icon name="charlist_inspiration_texthex" file="themes/icons/texthex/charlist_inspiration.png" />
 </root>

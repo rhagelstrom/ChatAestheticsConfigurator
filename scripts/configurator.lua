@@ -13,7 +13,7 @@ local deliverChatMessage = nil
 local aGMCustom = {}
 local aGMIcon = {"skull","dm","gm"}
 local aFontTheme = {"light","dark"}
-local aIconTheme = {"hex","simple","round","square", "dots"}
+local aIconTheme = {"hex","simple","round","square", "dots","texthex"}
 local aOverrides  = {"roll_attack", "roll_attack_hit", "roll_attack_miss", "roll_attack_crit","roll_damage","roll_cast", "roll_heal", "roll_effect" }
 local aFontsTypes = {"chatfont", "emotefont", "narratorfont", "systemfont", "msgfont", "oocfont", "chatnpcfont", "chatgmfont", "whisperfont"}
 
@@ -89,8 +89,8 @@ function registerChatOptions()
 	 	"option_label_CHATICONTHEME",
 	 	"option_entry_cycler",
 	 	{
-			labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_dots",
-	 		values = "simple|hex|round|square|dots",
+			labels = "option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_dots|option_val_theme_texthex",
+	 		values = "simple|hex|round|square|dots|texthex",
 			baselabel = "option_val_theme_off",
 	 		baseval = "off",
 	 		default = "simple"
