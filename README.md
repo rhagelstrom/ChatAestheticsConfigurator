@@ -1,7 +1,13 @@
+[![Build FG Extension](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml)
+
 # Chat Aesthetics Configurator
 
 **Current Version:** 1.8
 **Updated:** 02/05/23
+
+## Custom Themes
+
+The companion extension [Fireside](https://github.com/rhagelstrom/Fireside) can be used to create custom themes or custom GM icons. Fireside will allow these changes to persist even if Chat Aesthetics Configurator is updated. Fireside is not listed on the forge by design and you'll have to download it from github and make your own custom adjustments.
 
 ## Options
 
@@ -38,10 +44,6 @@ What does this mean? Well, when there is a "hit"... the players will see a fancy
 If you want to get that "whole suite" feel, this extension pairs nicely with MATTEKURE's "Fantasy Grounds 5E Indicators", Mad Nomad's "Mad Nomad's Interactive Portraits", and SirMotte's "Magnificent Darkness - Hearth Edition" theme, among others.
 
 I will do my best to support whatever issues come up, but at the bank-breaking price of zero gold, I can only do what I can do in my spare time. It goes without saying, but I'll say it, use the extension at your own risk.
-
-## Custom Themes
-
-The companion extension [Fireside](https://github.com/rhagelstrom/Fireside) can be used to create custom themes or custom GM icons. Fireside will allow these changes to persist even if Chat Aesthetics Configurator is updated. Fireside is not listed on the forge by design and you'll have to download it from github and make your own custom adjustments.
 
 ## Attribution
 

@@ -4,49 +4,53 @@
 
    <!-- SETTINGS SECTION TITLE -->
 
-    <string name="option_header_chat_aesthetics_configurator">Chat Aesthetics Configurator</string>
+   <string name="option_header_chat_aesthetics_configurator">Chat Aesthetics Configurator</string>
 
     <!-- SETTING CAPTIONS -->
 
     <!-- Option Window Titles -->
-    <string name="option_label_CHATICONTHEME">Icon Theme</string>
-    <string name="option_label_CHATUSEFONTCOLORS">Font Theme</string>
-    <string name="option_label_CHATINSPIRATION">Change Inspiration Icon</string>
-    <string name="option_label_CHATGMICON">GM Icon</string>
-    <string name="option_label_CHATGMICONCOLOR">GM Icon Color</string>
-    <string name="option_label_USEPORTRAIT">Use Character Portraits</string>
+   <string name="option_label_CHATICONTHEME">Icon Theme</string>
+   <string name="option_label_CHATUSEFONTCOLORS">Font Theme</string>
+   <string name="option_label_CHATINSPIRATION">Change Inspiration Icon</string>
+   <string name="option_label_CHATGMICON">GM Icon</string>
+   <string name="option_label_CHATGMICONCOLOR">GM Icon Color</string>
+   <string name="option_label_USEPORTRAIT">Use Character Portraits</string>
 
     <!-- OPTIONS -->
 
     <!-- Font Theme Options-->
-    <string name="option_val_font_off">Off</string>
-    <string name="option_val_font_hearth">Hearth</string>
-    <string name="option_val_font_light">Light Text</string>
+   <string name="option_val_font_off">Off</string>
+   <string name="option_val_font_hearth">Hearth</string>
+   <string name="option_val_font_light">Light Text</string>
+   <string name="option_val_font_light_20pt">Light Text 20pt</string>
+   <string name="option_val_font_light_22pt">Light Text 22pt</string>
    <string name="option_val_font_dark">Dark Text</string>
+   <string name="option_val_font_dark_20pt">Dark Text 20pt</string>
+   <string name="option_val_font_dark_22pt">Dark Text 22pt</string>
 
     <!-- Icon Theme Options-->
-    <string name="option_val_theme_off">Off</string>
-    <string name="option_val_theme_simple">Simple</string>
-    <string name="option_val_theme_hex">Hex</string>
-    <string name="option_val_theme_round">Round</string>
-    <string name="option_val_theme_square">Square</string>
-    <string name="option_val_theme_dots">Small Dots</string>
+   <string name="option_val_theme_off">Off</string>
+   <string name="option_val_theme_simple">Simple</string>
+   <string name="option_val_theme_hex">Hex</string>
+   <string name="option_val_theme_round">Round</string>
+   <string name="option_val_theme_square">Square</string>
+   <string name="option_val_theme_dots">Small Dots</string>
    <string name="option_val_theme_texthex">Text Hex</string>
-    <string name="option_val_theme_portraits">Player Portraits</string>
+   <string name="option_val_theme_portraits">Player Portraits</string>
 
     <!-- GM Icon Theme Options-->
-    <string name="option_val_gmicon_default">Default</string>
-    <string name="option_val_gmicon_skull">Skull</string>
-    <string name="option_val_gmicon_gm">GM</string>
-    <string name="option_val_gmicon_dm">DM</string>
+   <string name="option_val_gmicon_default">Default</string>
+   <string name="option_val_gmicon_skull">Skull</string>
+   <string name="option_val_gmicon_gm">GM</string>
+   <string name="option_val_gmicon_dm">DM</string>
 
-    <string name="option_val_gmicon_black">Black</string>
-    <string name="option_val_gmicon_blood">Blood</string>
-    <string name="option_val_gmicon_blue">Blue</string>
-    <string name="option_val_gmicon_green">Green</string>
-    <string name="option_val_gmicon_purple">Purple</string>
-    <string name="option_val_gmicon_red">Red</string>
+   <string name="option_val_gmicon_black">Black</string>
+   <string name="option_val_gmicon_blood">Blood</string>
+   <string name="option_val_gmicon_blue">Blue</string>
+   <string name="option_val_gmicon_green">Green</string>
+   <string name="option_val_gmicon_purple">Purple</string>
+   <string name="option_val_gmicon_red">Red</string>
 
-     <string name="option_val_inspiration_no">No</string>
-     <string name="option_val_inspiration_yes">Yes</string>
+   <string name="option_val_inspiration_no">No</string>
+   <string name="option_val_inspiration_yes">Yes</string>
 </root>
