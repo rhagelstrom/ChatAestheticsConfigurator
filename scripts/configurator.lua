@@ -38,15 +38,6 @@ function onInit()
         OptionsManager.registerCallback('CHATINSPIRATION', changeInspirationWidget)
     end
 
-    onDeliverMessage = ChatManager.onDeliverMessage
-    onReceiveMessage = ChatManager.onReceiveMessage
-    addChatMessage = Comm.addChatMessage
-    deliverChatMessage = Comm.deliverChatMessage
-
-    ChatManager.onDeliverMessage = customOnDeliverMessage
-    ChatManager.onReceiveMessage = customOnReceiveMessage
-    Comm.addChatMessage = customAddChatMessage
-    Comm.deliverChatMessage = customDeliverChatMessage
     for _, sName in pairs(Extension.getExtensions()) do
         if Extension.getExtensionInfo(sName).name:match('Bardic Inspiration Die') then
             bBIDI = true
@@ -56,6 +47,17 @@ function onInit()
 end
 
 function onTabletopInit()
+
+    onDeliverMessage = ChatManager.onDeliverMessage
+    onReceiveMessage = ChatManager.onReceiveMessage
+    addChatMessage = Comm.addChatMessage
+    deliverChatMessage = Comm.deliverChatMessage
+
+    ChatManager.onDeliverMessage = customOnDeliverMessage
+    ChatManager.onReceiveMessage = customOnReceiveMessage
+    Comm.addChatMessage = customAddChatMessage
+    Comm.deliverChatMessage = customDeliverChatMessage
+
     changeIconTheme()
     changeFontTheme()
     changeGMIcon()
