@@ -2,8 +2,8 @@
 
 # Chat Aesthetics Configurator
 
-**Current Version:** 1.9
-**Updated:** 02/11/23
+**Current Version:** 1.10
+**Updated:** 03/01/23
 
 ## Custom Themes
 
