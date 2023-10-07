@@ -1,3 +1,7 @@
+--
+-- luacheck: globals onInit onTabletopInit onClose registerChatOptions customAddChatMessage customDeliverChatMessage customOnReceiveMessage
+-- luacheck: globals customOnDeliverMessage customCreateEntry replaceInspirationWidget changeInspirationWidget changeChat changeIconTheme
+-- luacheck: globals Comm changeFontTheme changeGMIcon addFontTheme addIconTheme addGMPortrait printErrors
 local sIcon = nil
 local sFont = nil
 local sGMIcon = nil
@@ -14,8 +18,27 @@ local aGMCustom = {}
 local aGMIcon = {'skull', 'dm', 'gm'}
 local aFontTheme = {'light', 'light_20pt', 'light_22pt', 'dark', 'dark_20pt', 'dark_22pt'}
 local aIconTheme = {'hex', 'simple', 'round', 'square', 'dots', 'texthex'}
-local aOverrides = {'roll_attack', 'roll_attack_hit', 'roll_attack_miss', 'roll_attack_crit', 'roll_damage', 'roll_cast', 'roll_heal', 'roll_effect'}
-local aFontsTypes = {'chatfont', 'emotefont', 'narratorfont', 'systemfont', 'msgfont', 'oocfont', 'chatnpcfont', 'chatgmfont', 'whisperfont'}
+local aOverrides = {
+    'roll_attack',
+    'roll_attack_hit',
+    'roll_attack_miss',
+    'roll_attack_crit',
+    'roll_damage',
+    'roll_cast',
+    'roll_heal',
+    'roll_effect'
+}
+local aFontsTypes = {
+    'chatfont',
+    'emotefont',
+    'narratorfont',
+    'systemfont',
+    'msgfont',
+    'oocfont',
+    'chatnpcfont',
+    'chatgmfont',
+    'whisperfont'
+}
 
 local aCustomThemeErrors = {}
 
@@ -83,34 +106,38 @@ function onClose()
 end
 
 function registerChatOptions()
-    OptionsManager.registerOption2('CHATICONTHEME', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATICONTHEME', 'option_entry_cycler', {
-        labels = 'option_val_theme_simple|option_val_theme_hex|option_val_theme_round|option_val_theme_square|option_val_theme_dots|option_val_theme_texthex',
+    OptionsManager.registerOption2('CHATICONTHEME', false, 'option_header_chat_aesthetics_configurator',
+                                   'option_label_CHATICONTHEME', 'option_entry_cycler', {
+        labels = 'option_val_theme_simple|option_val_theme_hex|option_val_theme_round|' ..
+            'option_val_theme_square|option_val_theme_dots|option_val_theme_texthex',
         values = 'simple|hex|round|square|dots|texthex',
         baselabel = 'option_val_theme_off',
         baseval = 'off',
         default = 'simple'
     })
 
-    OptionsManager.registerOption2('CHATFONTCOLORS', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATUSEFONTCOLORS',
-                                   'option_entry_cycler', {
+    OptionsManager.registerOption2('CHATFONTCOLORS', false, 'option_header_chat_aesthetics_configurator',
+                                   'option_label_CHATUSEFONTCOLORS', 'option_entry_cycler', {
         -- labels = "option_val_font_dark|option_val_font_light|option_val_font_hearth",
         -- values = "dark|light|hearth",
-        labels = 'option_val_font_dark|option_val_font_dark_20pt|option_val_font_dark_22pt|option_val_font_light|option_val_font_light_20pt|option_val_font_light_22pt',
+        labels = 'option_val_font_dark|option_val_font_dark_20pt|option_val_font_dark_22pt|' ..
+            'option_val_font_light|option_val_font_light_20pt|option_val_font_light_22pt',
         values = 'dark|dark_20pt|dark_22pt|light|light_20pt|light_22pt',
         baselabel = 'option_val_font_off',
         baseval = 'off',
         default = 'dark'
     })
 
-    OptionsManager.registerOption2('CHATGMICON', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATGMICON', 'option_entry_cycler', {
+    OptionsManager.registerOption2('CHATGMICON', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATGMICON',
+                                   'option_entry_cycler', {
         labels = 'option_val_gmicon_dm|option_val_gmicon_gm|option_val_gmicon_skull',
         values = 'dm|gm|skull',
         baselabel = 'option_val_gmicon_default',
         baseval = 'default',
         default = 'default'
     })
-    OptionsManager.registerOption2('CHATGMICONCOLOR', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATGMICONCOLOR',
-                                   'option_entry_cycler', {
+    OptionsManager.registerOption2('CHATGMICONCOLOR', false, 'option_header_chat_aesthetics_configurator',
+                                   'option_label_CHATGMICONCOLOR', 'option_entry_cycler', {
         labels = 'option_val_gmicon_blood|option_val_gmicon_blue|option_val_gmicon_green|option_val_gmicon_purple|option_val_gmicon_red',
         values = 'blood|blue|green|purple|red',
         baselabel = 'option_val_gmicon_black',
@@ -118,8 +145,8 @@ function registerChatOptions()
         default = 'black'
     })
     if bInspiration then
-        OptionsManager.registerOption2('CHATINSPIRATION', false, 'option_header_chat_aesthetics_configurator', 'option_label_CHATINSPIRATION',
-                                       'option_entry_cycler', {
+        OptionsManager.registerOption2('CHATINSPIRATION', false, 'option_header_chat_aesthetics_configurator',
+                                       'option_label_CHATINSPIRATION', 'option_entry_cycler', {
             labels = 'option_val_inspiration_no',
             values = 'no',
             baselabel = 'option_val_inspiration_yes',
