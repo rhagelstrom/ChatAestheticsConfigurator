@@ -2,7 +2,7 @@
 -- luacheck: globals onInit onTabletopInit onClose registerChatOptions customAddChatMessage customDeliverChatMessage customOnReceiveMessage
 -- luacheck: globals customOnDeliverMessage customCreateEntry replaceInspirationWidget changeInspirationWidget changeChat changeIconTheme
 -- luacheck: globals Comm changeFontTheme changeGMIcon addFontTheme addIconTheme addGMPortrait printErrors
-local sIcon = nil
+local sIcon = ''
 local sFont = nil
 local sGMIcon = nil
 local bBIDI = false
@@ -84,6 +84,9 @@ function onTabletopInit()
     changeIconTheme()
     changeFontTheme()
     changeGMIcon()
+    if User.getRulesetName() == '5E' or User.getRulesetName() == '2E' then
+        changeInspirationWidget()
+    end
     -- printErrors()
 end
 
@@ -188,31 +191,34 @@ function customOnReceiveMessage(messagedata, ...)
     return ret
 end
 
-function customCreateEntry(sIdentity)
-    createEntry(sIdentity)
-    replaceInspirationWidget(sIdentity)
+function customCreateEntry(w, tData)
+    createEntry(w, tData)
+    changeInspirationWidget()
 end
 
 function changeInspirationWidget()
-    local tIdentities = User.getAllActiveIdentities()
+    local tIdentities = CharacterListManager.getActivatedIdentities();
     for _, sIdentity in pairs(tIdentities) do
+        replaceInspirationWidget(sIdentity)
+    end
+    local tPartyIdentities = CharacterListManager.getPartyIdentities()
+    for _, sIdentity in pairs(tPartyIdentities) do
         replaceInspirationWidget(sIdentity)
     end
 end
 
 function replaceInspirationWidget(sIdentity)
-    local ctrlChar = CharacterListManager.findControlForIdentity(sIdentity)
-    if ctrlChar then
-        local widget = ctrlChar.findWidget('inspiration')
-        if widget then
-            if OptionsManager.getOption('CHATINSPIRATION') == 'yes' then
-                widget.setBitmap('charlist_inspiration' .. sIcon)
-            else
-                widget.setBitmap('charlist_inspiration')
-            end
-            CharacterListManager_Inspiration.updateWidgets(sIdentity)
+    local ctrlChar = CharacterListManager.getDisplayControlByPath(sIdentity.sPath)
+    local widget = ctrlChar.findWidget('inspiration')
+    if widget then
+        if OptionsManager.getOption('CHATINSPIRATION') == 'yes' then
+            widget.setBitmap('charlist_inspiration' .. sIcon)
+        else
+            widget.setBitmap('charlist_inspiration')
         end
+        CharacterListManager_Inspiration.updateWidgets(ctrlChar)
     end
+
 end
 
 function changeChat(messagedata)
