@@ -1,7 +1,7 @@
 --
 -- luacheck: globals onInit onTabletopInit onClose registerChatOptions customAddChatMessage customDeliverChatMessage customOnReceiveMessage
 -- luacheck: globals customOnDeliverMessage customCreateEntry replaceInspirationWidget changeInspirationWidget changeChat changeIconTheme
--- luacheck: globals Comm changeFontTheme changeGMIcon addFontTheme addIconTheme addGMPortrait printErrors
+-- luacheck: globals Comm changeFontTheme changeGMIcon addFontTheme addIconTheme addGMPortrait printErrors onUpdateInspiration
 local sIcon = ''
 local sFont = nil
 local sGMIcon = nil
@@ -59,6 +59,7 @@ function onInit()
     if bInspiration then
         OptionsManager.registerCallback('CHATICONTHEME', changeInspirationWidget)
         OptionsManager.registerCallback('CHATINSPIRATION', changeInspirationWidget)
+        DB.addHandler('charsheet.*.inspiration', 'onUpdate', onUpdateInspiration);
     end
 
     for _, sName in pairs(Extension.getExtensions()) do
@@ -196,6 +197,10 @@ function customCreateEntry(w, tData)
     changeInspirationWidget()
 end
 
+function onUpdateInspiration()
+    changeInspirationWidget()
+end
+
 function changeInspirationWidget()
     local tIdentities = CharacterListManager.getActivatedIdentities();
     for _, sIdentity in pairs(tIdentities) do
@@ -209,6 +214,9 @@ end
 
 function replaceInspirationWidget(sIdentity)
     local ctrlChar = CharacterListManager.getDisplayControlByPath(sIdentity.sPath)
+    if not ctrlChar then
+        return
+    end
     local widget = ctrlChar.findWidget('inspiration')
     if widget then
         if OptionsManager.getOption('CHATINSPIRATION') == 'yes' then
