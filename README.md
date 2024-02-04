@@ -1,6 +1,7 @@
-[![Build FG Extension](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml)
 
 # Chat Aesthetics Configurator
+
+[![Build FG Extension](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml)
 
 **Current Version:** 1.11
 **Updated:** 11/21/23
