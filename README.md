@@ -1,7 +1,7 @@
 
 # Chat Aesthetics Configurator
 
-[![Build FG Extension](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml)
+[![Build FG Extension](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/create-release.yml) [![Luacheckrc](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/luacheck.yml) [![Markdownlint](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/rhagelstrom/ChatAestheticsConfigurator/actions/workflows/markdownlint.yml)
 
 **Current Version:** 1.11
 **Updated:** 11/21/23
